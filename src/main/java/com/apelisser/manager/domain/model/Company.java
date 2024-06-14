@@ -16,10 +16,10 @@ public class Company {
     private Long id;
     private String name;
     private String alias;
-    private PersonType personType;
-    private String personId;
+    private Person person;
     private Address address;
-    private String description;
+    private RecordStatus status;
+    private String observation;
     private List<Department> departments;
 
 }

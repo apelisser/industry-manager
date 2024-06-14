@@ -16,6 +16,6 @@ public class Department {
     private Long id;
     private String name;
     private String description;
-    private List<Equipament> equipaments;
+    private List<Equipment> equipments;
 
 }
