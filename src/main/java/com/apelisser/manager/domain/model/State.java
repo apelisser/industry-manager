@@ -1,7 +1,5 @@
 package com.apelisser.manager.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,37 +7,30 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-import java.time.OffsetDateTime;
-
-@Setter
 @Getter
+@Setter
+@ToString
+@EqualsAndHashCode(of = { "id" })
 @Entity
-@Table
-public class Address {
+@Table(name = "state")
+public class State {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String street;
+    private String name;
     
-    private String number;
-    
-    private String complement;
-    
-    private String neighborhood;
+    private String abbrevName;
     
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JoinColumn(name = "country_id")
+    private Country country;
     
-    private String zipCode;
-    
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
 
 }
