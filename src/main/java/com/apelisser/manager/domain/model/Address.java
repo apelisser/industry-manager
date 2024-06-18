@@ -17,7 +17,6 @@ import java.time.OffsetDateTime;
 @Setter
 @Getter
 @Entity
-@Table
 public class Address {
     
     @Id

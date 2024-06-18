@@ -1,15 +1,22 @@
 package com.apelisser.manager.domain.model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +33,7 @@ public class Company {
     
     private String alias;
     
+    @Embedded
     private Person person;
     
     @Enumerated(EnumType.STRING)
@@ -34,7 +42,7 @@ public class Company {
     private String observation;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    private List<Address> address = new ArrayList<>();
+    private List<Address> adresses = new ArrayList<>();
     
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
