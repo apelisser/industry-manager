@@ -1,8 +1,5 @@
 package com.apelisser.manager.domain.model;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,10 +7,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,7 +33,7 @@ public class Equipment {
     private String serialNumber;
     private String description;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "equipment_id", nullable = false)
     private List<Piece> pieces;
     
@@ -44,6 +46,7 @@ public class Equipment {
     @ToString
     @EqualsAndHashCode(of = { "id" })
     @Entity
+    @Table(name = "equipment_piece")
     public static class Piece {
 
         @Id
