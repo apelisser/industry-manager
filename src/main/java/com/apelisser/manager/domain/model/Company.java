@@ -47,8 +47,7 @@ public class Company {
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private List<Address> addresses = new ArrayList<>();
     
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private List<Department> departments = new ArrayList<>();
 
 }

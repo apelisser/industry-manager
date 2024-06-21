@@ -27,12 +27,10 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "person_type")
     @Enumerated(EnumType.STRING)
     private PersonType type;
     
-    @Column(name = "person_value")
-    private String value;
+    private String code;
     
     @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
     List<Company> companies;
