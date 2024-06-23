@@ -1,4 +1,4 @@
-package com.apelisser.manager.domain.model;
+package com.apelisser.manager.domain.enums;
 
 import com.apelisser.manager.domain.model.validate.Validatable;
 import com.apelisser.manager.domain.model.validate.impl.CNPJValidator;

@@ -1,5 +1,6 @@
 package com.apelisser.manager.domain.model;
 
+import com.apelisser.manager.domain.enums.RecordStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
