@@ -1,8 +1,8 @@
 package com.apelisser.manager.domain.model.validate;
 
-@FunctionalInterface
-public interface Validatable<T> {
+import java.util.function.Predicate;
 
-    boolean isValid(T value);
-    
+@FunctionalInterface
+public interface Validatable<T> extends Predicate<T> {
+
 }

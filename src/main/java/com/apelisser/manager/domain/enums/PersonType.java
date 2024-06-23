@@ -16,7 +16,7 @@ public enum PersonType {
     }
     
     public <T> boolean isValid(T obj) {
-        return ((Validatable<T>) validator).isValid(obj);
+        return ((Validatable<T>) validator).test(obj);
     }
     
     public <T> Validatable<T> getValidator() {

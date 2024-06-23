@@ -5,7 +5,7 @@ import com.apelisser.manager.domain.model.validate.Validatable;
 public class CNPJValidator implements Validatable<String> {
     
     @Override
-    public boolean isValid(String value) {
+    public boolean test(String value) {
         // TODO - implementar validacao de CNPJ
         return false;
     }
