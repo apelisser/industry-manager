@@ -11,7 +11,6 @@ import lombok.ToString;
 @ToString
 public class CountryInput {
 
-    private Long id;
     private String name;
     private String abbrevName;
 

@@ -9,9 +9,11 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CountryRegistrationServiceImpl implements CountryRegistrationService {
-    
+
     private final CountryRepository countryRepository;
 
     public CountryRegistrationServiceImpl(CountryRepository countryRepository) {
@@ -35,9 +37,14 @@ public class CountryRegistrationServiceImpl implements CountryRegistrationServic
     }
 
     @Override
-    public Country search(Long countryId) {
+    public Country findById(Long countryId) {
         return countryRepository.findById(countryId)
             .orElseThrow(() -> new CountryNotFoundException(countryId));
+    }
+
+    @Override
+    public List<Country> findAll() {
+        return countryRepository.findAll();
     }
 
 }
