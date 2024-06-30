@@ -29,6 +29,7 @@ public class CountryRegistrationServiceImpl implements CountryRegistrationServic
     public void delete(Long countryId) {
         try {
             countryRepository.deleteById(countryId);
+            countryRepository.flush();
         } catch (EmptyResultDataAccessException e) {
             throw new CountryNotFoundException(countryId, e);
         } catch (DataIntegrityViolationException e) {

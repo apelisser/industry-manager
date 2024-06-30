@@ -67,7 +67,7 @@ public class CountryController {
 
     @DeleteMapping("/{countryId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remover(@PathVariable Long countryId) {
+    public void delete(@PathVariable Long countryId) {
         countryService.delete(countryId);
     }
 
