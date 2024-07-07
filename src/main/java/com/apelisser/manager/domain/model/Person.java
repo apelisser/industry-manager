@@ -26,13 +26,17 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Enumerated(EnumType.STRING)
     private PersonType type;
-    
+
     private String code;
-    
+
     @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
     List<Company> companies;
-    
+
+    public boolean isValid() {
+        return type != null && type.isValid(code);
+    }
+
 }
