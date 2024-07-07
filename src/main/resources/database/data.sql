@@ -12,3 +12,6 @@ insert into CITY (ID, NAME, STATE_ID) values (1, 'Cruzeiro do Sul', 1);
 insert into CITY (ID, NAME, STATE_ID) values (2, 'Paranavaí', 1);
 insert into CITY (ID, NAME, STATE_ID) values (3, 'Presidente Prudente', 2);
 insert into CITY (ID, NAME, STATE_ID) values (4, 'São Paulo', 2);
+
+insert into PERSON (ID, TYPE, CODE) values (1, 'CNPJ', '69856931000192');
+insert into PERSON (ID, TYPE, CODE) values (2, 'CPF', '23362938035');
