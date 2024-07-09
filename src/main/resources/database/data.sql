@@ -15,3 +15,7 @@ insert into CITY (ID, NAME, STATE_ID) values (4, 'São Paulo', 2);
 
 insert into PERSON (ID, TYPE, CODE) values (1, 'CNPJ', '69856931000192');
 insert into PERSON (ID, TYPE, CODE) values (2, 'CPF', '23362938035');
+
+insert into COMPANY (ID, NAME, ALIAS, PERSON_ID, STATUS, OBSERVATION) values (1, 'Company 01', 'Comp01', 1, 'ACTIVE', null);
+insert into COMPANY (ID, NAME, ALIAS, PERSON_ID, STATUS, OBSERVATION) values (2, 'Company 02', 'Comp02', 2, 'ACTIVE', 'obs02');
+insert into COMPANY (ID, NAME, ALIAS, PERSON_ID, STATUS, OBSERVATION) values (3, 'Company 03', 'Comp03', 1, 'ACTIVE', 'obs03');
