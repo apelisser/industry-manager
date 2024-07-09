@@ -31,23 +31,23 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String name;
-    
+
     private String alias;
-    
+
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
-    
+
     @Enumerated(EnumType.STRING)
-    private RecordStatus status;
-    
+    private RecordStatus status = RecordStatus.ACTIVE;
+
     private String observation;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private List<Address> addresses = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private List<Department> departments = new ArrayList<>();
 

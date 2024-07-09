@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.repository;
 
-import com.apelisser.manager.domain.model.Equipment;
+import com.apelisser.manager.domain.model.Company;
 
-public interface CompanyRepository extends CustomJpaRepository<Equipment, Long> {
+public interface CompanyRepository extends CustomJpaRepository<Company, Long> {
 }
