@@ -1,14 +1,7 @@
 package com.apelisser.manager.api.v1.controller;
 
-import com.apelisser.manager.api.v1.mapper.StateInputDisassembler;
-import com.apelisser.manager.api.v1.mapper.StateModelAssembler;
-import com.apelisser.manager.api.v1.model.CountryModel;
-import com.apelisser.manager.api.v1.model.StateModel;
-import com.apelisser.manager.api.v1.model.input.CountryInput;
-import com.apelisser.manager.api.v1.model.input.StateInput;
-import com.apelisser.manager.domain.model.Country;
-import com.apelisser.manager.domain.model.State;
-import com.apelisser.manager.domain.service.StateRegistrationService;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.apelisser.manager.api.v1.mapper.StateInputDisassembler;
+import com.apelisser.manager.api.v1.mapper.StateModelAssembler;
+import com.apelisser.manager.api.v1.model.StateModel;
+import com.apelisser.manager.api.v1.model.input.StateInput;
+import com.apelisser.manager.domain.model.State;
+import com.apelisser.manager.domain.service.StateRegistrationService;
 
 @RestController
 @RequestMapping(
