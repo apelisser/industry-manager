@@ -48,7 +48,4 @@ public class Company {
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private List<Address> addresses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    private List<Department> departments = new ArrayList<>();
-
 }

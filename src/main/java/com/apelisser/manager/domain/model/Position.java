@@ -27,14 +27,14 @@ public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
- 
+
     private String name;
 
     @Enumerated(EnumType.STRING)
     private RecordStatus status;
-    
+
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "position_superior_id")
-    private List<Position> superiores;
-    
+    private List<Position> superiors;
+
 }
