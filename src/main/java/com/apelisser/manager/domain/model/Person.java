@@ -32,9 +32,6 @@ public class Person {
 
     private String code;
 
-    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
-    List<Company> companies;
-
     public boolean isValid() {
         return type != null && type.isValid(code);
     }

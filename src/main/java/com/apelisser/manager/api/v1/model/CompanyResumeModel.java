@@ -15,6 +15,6 @@ public class CompanyResumeModel {
     private Long id;
     private String name;
     private RecordStatus status;
-    private PersonResumeModel person;
+    private PersonModel person;
 
 }

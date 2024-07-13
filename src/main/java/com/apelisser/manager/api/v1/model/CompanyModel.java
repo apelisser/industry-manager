@@ -21,7 +21,7 @@ public class CompanyModel {
     private String alias;
     private RecordStatus status;
     private String observation;
-    private PersonResumeModel person;
+    private PersonModel person;
     private List<Address> addresses = new ArrayList<>();
 
 }
