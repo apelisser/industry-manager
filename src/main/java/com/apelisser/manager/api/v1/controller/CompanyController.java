@@ -2,9 +2,7 @@ package com.apelisser.manager.api.v1.controller;
 
 import com.apelisser.manager.api.v1.mapper.CompanyInputDisassembler;
 import com.apelisser.manager.api.v1.mapper.CompanyModelAssembler;
-import com.apelisser.manager.api.v1.mapper.CompanyResumeModelAssembler;
 import com.apelisser.manager.api.v1.model.CompanyModel;
-import com.apelisser.manager.api.v1.model.CompanyResumeModel;
 import com.apelisser.manager.api.v1.model.input.CompanyInput;
 import com.apelisser.manager.domain.model.Company;
 import com.apelisser.manager.domain.service.CompanyRegistrationService;
@@ -30,22 +28,19 @@ public class CompanyController {
 
     private final CompanyInputDisassembler companyDisassembler;
     private final CompanyModelAssembler companyAssembler;
-    private final CompanyResumeModelAssembler companyResumeAssembler;
     private final CompanyRegistrationService companyService;
 
     public CompanyController(CompanyInputDisassembler companyDisassembler, CompanyModelAssembler companyAssembler,
-        CompanyResumeModelAssembler companyResumeAssembler,
         CompanyRegistrationService companyService) {
         this.companyDisassembler = companyDisassembler;
         this.companyAssembler = companyAssembler;
-        this.companyResumeAssembler = companyResumeAssembler;
         this.companyService = companyService;
     }
 
     @GetMapping
-    public List<CompanyResumeModel> findAll() {
+    public List<CompanyModel> findAll() {
         List<Company> companies = companyService.findAll();
-        return companyResumeAssembler.toCollectionModel(companies);
+        return companyAssembler.toCollectionModel(companies);
     }
 
     @GetMapping("/{companyId}")
