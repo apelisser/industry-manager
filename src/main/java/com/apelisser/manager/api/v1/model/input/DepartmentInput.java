@@ -7,10 +7,12 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @EqualsAndHashCode
-public class CompanyIdInput {
+@ToString
+public class DepartmentInput {
 
-    private Long id;
+    private String name;
+    private String description;
+    private CompanyIdInput company;
 
 }

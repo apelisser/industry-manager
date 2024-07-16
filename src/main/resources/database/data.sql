@@ -19,3 +19,7 @@ insert into PERSON (ID, TYPE, CODE) values (2, 'CPF', '23362938035');
 insert into COMPANY (ID, NAME, ALIAS, PERSON_ID, STATUS, OBSERVATION) values (1, 'Company 01', 'Comp01', 1, 'ACTIVE', null);
 insert into COMPANY (ID, NAME, ALIAS, PERSON_ID, STATUS, OBSERVATION) values (2, 'Company 02', 'Comp02', 2, 'ACTIVE', 'obs02');
 insert into COMPANY (ID, NAME, ALIAS, PERSON_ID, STATUS, OBSERVATION) values (3, 'Company 03', 'Comp03', 1, 'ACTIVE', 'obs03');
+
+insert into DEPARTMENT (ID, NAME, DESCRIPTION, COMPANY_ID) values (1, 'Logística', null, 1);
+insert into DEPARTMENT (ID, NAME, DESCRIPTION, COMPANY_ID) values (2, 'Produção', null, 1);
+insert into DEPARTMENT (ID, NAME, DESCRIPTION, COMPANY_ID) values (3, 'Administrativo', null, 2);
