@@ -2,9 +2,7 @@ package com.apelisser.manager.api.v1.controller;
 
 import com.apelisser.manager.api.v1.mapper.PersonInputDisassembler;
 import com.apelisser.manager.api.v1.mapper.PersonModelAssembler;
-import com.apelisser.manager.api.v1.mapper.PersonResumeModelAssembler;
 import com.apelisser.manager.api.v1.model.PersonModel;
-import com.apelisser.manager.api.v1.model.PersonResumeModel;
 import com.apelisser.manager.api.v1.model.input.PersonInput;
 import com.apelisser.manager.domain.model.Person;
 import com.apelisser.manager.domain.service.PersonRegistrationService;
@@ -30,21 +28,19 @@ public class PersonController {
 
     private final PersonInputDisassembler personDisassembler;
     private final PersonModelAssembler personAssembler;
-    private final PersonResumeModelAssembler personResumeAssembler;
     private final PersonRegistrationService personService;
 
     public PersonController(PersonInputDisassembler personDisassembler, PersonModelAssembler personAssembler,
-        PersonResumeModelAssembler personResumeAssembler, PersonRegistrationService personService) {
+        PersonRegistrationService personService) {
         this.personDisassembler = personDisassembler;
         this.personAssembler = personAssembler;
-        this.personResumeAssembler = personResumeAssembler;
         this.personService = personService;
     }
 
     @GetMapping
-    public List<PersonResumeModel> findAll() {
+    public List<PersonModel> findAll() {
         List<Person> persons = personService.findAll();
-        return personResumeAssembler.toCollectionModel(persons);
+        return personAssembler.toCollectionModel(persons);
     }
 
     @GetMapping("/{personId}")
@@ -55,18 +51,18 @@ public class PersonController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public PersonResumeModel add(@RequestBody PersonInput personInput) {
+    public PersonModel add(@RequestBody PersonInput personInput) {
         Person domainPerson = personDisassembler.toDomainObject(personInput);
         Person savedPerson = personService.save(domainPerson);
-        return personResumeAssembler.toModel(savedPerson);
+        return personAssembler.toModel(savedPerson);
     }
 
     @PutMapping("/{personId}")
-    public PersonResumeModel update(@PathVariable Long personId, @RequestBody PersonInput personInput) {
+    public PersonModel update(@PathVariable Long personId, @RequestBody PersonInput personInput) {
         Person person = personService.findById(personId);
         personDisassembler.copyToDomainObject(personInput, person);
         Person updatedPerson = personService.save(person);
-        return personResumeAssembler.toModel(updatedPerson);
+        return personAssembler.toModel(updatedPerson);
     }
 
     @DeleteMapping("/{personId}")

@@ -1,19 +1,19 @@
 package com.apelisser.manager.api.v1.model;
 
-import com.apelisser.manager.domain.model.Company;
+import com.apelisser.manager.domain.enums.PersonType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(of = {"id"})
 @ToString
-public class PersonModel extends PersonResumeModel{
+public class PersonModel {
 
-    List<Company> companies;
+    private Long id;
+    private PersonType type;
+    private String code;
 
 }
