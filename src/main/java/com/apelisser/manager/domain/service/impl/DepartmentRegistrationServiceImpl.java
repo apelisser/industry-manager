@@ -34,9 +34,9 @@ public class DepartmentRegistrationServiceImpl implements DepartmentRegistration
     }
 
     @Override
-    public void delete(Long companyId, Long departmentId) {
+    public void delete(Long departmentId) {
         try {
-            departmentRepository.deleteByIdAndCompanyId(departmentId, companyId);
+            departmentRepository.deleteById(departmentId);
             departmentRepository.flush();
         } catch (EmptyResultDataAccessException e) {
             throw new DepartmentNotFoundException(departmentId, e);
@@ -46,14 +46,14 @@ public class DepartmentRegistrationServiceImpl implements DepartmentRegistration
     }
 
     @Override
-    public Department findById(Long companyId, Long departmentId) {
-        return departmentRepository.findByIdAndCompanyId(departmentId, companyId)
+    public Department findById(Long departmentId) {
+        return departmentRepository.findById(departmentId)
             .orElseThrow(() -> new DepartmentNotFoundException(departmentId));
     }
 
     @Override
-    public List<Department> findAll(Long companyId) {
-        return departmentRepository.findAllByCompanyId(companyId);
+    public List<Department> findAll() {
+        return departmentRepository.findAll();
     }
 
 }

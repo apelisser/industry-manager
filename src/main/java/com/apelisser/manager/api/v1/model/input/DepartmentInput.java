@@ -13,5 +13,6 @@ public class DepartmentInput {
 
     private String name;
     private String description;
+    private CompanyIdInput company;
 
 }

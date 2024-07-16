@@ -8,10 +8,10 @@ public interface DepartmentRegistrationService {
 
     Department save(Department department);
 
-    void delete(Long companyId, Long departmentId);
+    void delete(Long departmentId);
 
-    Department findById(Long companyId, Long departmentId);
+    Department findById(Long departmentId);
 
-    List<Department> findAll(Long companyId);
+    List<Department> findAll();
 
 }

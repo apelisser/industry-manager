@@ -9,11 +9,10 @@ import lombok.ToString;
 @Setter
 @EqualsAndHashCode(of = {"id"})
 @ToString
-public class DepartmentModel {
+public class DepartmentResumeModel {
 
     private Long id;
     private String name;
     private String description;
-    private CompanyResumeModel company;
 
 }
