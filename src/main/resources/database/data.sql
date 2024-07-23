@@ -23,3 +23,10 @@ insert into COMPANY (ID, NAME, ALIAS, PERSON_ID, STATUS, OBSERVATION) values (3,
 insert into DEPARTMENT (ID, NAME, DESCRIPTION, COMPANY_ID) values (1, 'Logística', null, 1);
 insert into DEPARTMENT (ID, NAME, DESCRIPTION, COMPANY_ID) values (2, 'Produção', null, 1);
 insert into DEPARTMENT (ID, NAME, DESCRIPTION, COMPANY_ID) values (3, 'Administrativo', null, 2);
+
+insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (1, 'Presidente', 'Presidente geral', 'ACTIVE', 1, null);
+insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (2, 'Diretor', 'Diretor geral', 'ACTIVE', 1, 1);
+insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (3, 'Gerente Administrativo', 'Gerente Adm', 'ACTIVE', 1, 2);
+insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (4, 'Gerente Industrial', 'Gerente Ind', 'ACTIVE', 1, 2);
+insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (5, 'Gerente Qualidade', 'Gerente Qua', 'ACTIVE', 1, 2);
+insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (6, 'Supervisor Laboratório', 'Supervisor lab', 'ACTIVE', 1, 5);

@@ -32,7 +32,7 @@ public class Company {
     private String alias;
 
     @ManyToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "person_id", nullable = false)
     private Person person;
 
     @Enumerated(EnumType.STRING)
