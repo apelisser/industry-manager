@@ -1,26 +1,22 @@
 package com.apelisser.manager.domain.model;
 
 import com.apelisser.manager.domain.enums.RecordStatus;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(of = { "id" })
 @Entity
 public class Position {
 
@@ -28,13 +24,21 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    private RecordStatus status;
+    private String description;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "position_superior_id")
-    private List<Position> superiors;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RecordStatus status = RecordStatus.ACTIVE;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
+
+    @ManyToOne
+    @JoinColumn(name = "superior_id")
+    private Position superior;
 
 }
