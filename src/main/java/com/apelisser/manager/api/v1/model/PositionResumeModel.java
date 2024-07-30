@@ -18,7 +18,5 @@ public class PositionResumeModel {
     private Long id;
     private String name;
     private String description;
-    private SuperiorPositionModel superior;
-    private CompanyResumeModel company;
 
 }

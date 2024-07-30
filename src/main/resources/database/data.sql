@@ -30,3 +30,8 @@ insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) va
 insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (4, 'Gerente Industrial', 'Gerente Ind', 'ACTIVE', 1, 2);
 insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (5, 'Gerente Qualidade', 'Gerente Qua', 'ACTIVE', 1, 2);
 insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (6, 'Supervisor Laboratório', 'Supervisor lab', 'ACTIVE', 1, 5);
+
+insert into EMPLOYEE (ID, NAME, EMAIL, USERNAME, PASSWORD, BADGE, POSITION_ID) values (1, 'User 01', 'user01@email.com', 'user01', '@111', '254', 1);
+insert into EMPLOYEE (ID, NAME, EMAIL, USERNAME, PASSWORD, BADGE, POSITION_ID) values (2, 'User 02', 'user01@email.com', 'user02', '@222', '255', 2);
+insert into EMPLOYEE (ID, NAME, EMAIL, USERNAME, PASSWORD, BADGE, POSITION_ID) values (3, 'User 03', 'user01@email.com', 'user03', '@333', '256', 3);
+insert into EMPLOYEE (ID, NAME, EMAIL, USERNAME, PASSWORD, BADGE, POSITION_ID) values (4, 'User 04', 'user01@email.com', 'user04', '@444', '257', 6);
