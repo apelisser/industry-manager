@@ -7,14 +7,15 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"id"})
+@EqualsAndHashCode
 @ToString
-public class PositionModel {
+public class EmployeeModel {
 
     private Long id;
     private String name;
-    private String description;
-    private SuperiorPositionModel superior;
-    private CompanyResumeModel company;
+    private String email;
+    private String username;
+    private String badge;
+    private PositionModel position;
 
 }
