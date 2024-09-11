@@ -19,9 +19,8 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
-@EqualsAndHashCode(of = { "id" })
 @Entity
+@Table(name = "equipment")
 public class Equipment {
 
     @Id
@@ -32,11 +31,11 @@ public class Equipment {
     private String model;
     private String serialNumber;
     private String description;
-    
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "equipment_id", nullable = false)
     private List<Piece> pieces;
-    
+
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;

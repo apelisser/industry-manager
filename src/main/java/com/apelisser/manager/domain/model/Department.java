@@ -6,16 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-@EqualsAndHashCode(of = {"id"})
 @Entity
+@Table(name = "department")
 public class Department {
 
     @Id
