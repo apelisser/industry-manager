@@ -11,16 +11,13 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode(of = { "id" })
-public class EquipmentModel {
+public class EquipmentResumeModel {
 
     private Long id;
     private String name;
     private String brand;
     private String model;
-    private String serialNumber;
-    private String description;
     private List<Piece> pieces;
-    private DepartmentResumeModel department;
 
     @Getter
     @Setter
@@ -30,6 +27,5 @@ public class EquipmentModel {
         private Long id;
         private String name;
         private double capacity;
-        private String description;
     }
 }
