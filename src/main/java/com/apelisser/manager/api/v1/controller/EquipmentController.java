@@ -40,7 +40,6 @@ public class EquipmentController {
         this.equipmentService = equipmentService;
     }
 
-
     @GetMapping
     public List<EquipmentResumeModel> findAll() {
         List<Equipment> equipments = equipmentService.findAll();

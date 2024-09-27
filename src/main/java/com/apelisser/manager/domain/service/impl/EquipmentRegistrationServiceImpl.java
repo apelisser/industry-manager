@@ -21,7 +21,8 @@ public class EquipmentRegistrationServiceImpl implements EquipmentRegistrationSe
     private final EquipmentRepository equipmentRepository;
     private final DepartmentRegistrationService departmentService;
 
-    public EquipmentRegistrationServiceImpl(EquipmentRepository equipmentRepository, DepartmentRegistrationService departmentService) {
+    public EquipmentRegistrationServiceImpl(EquipmentRepository equipmentRepository,
+            DepartmentRegistrationService departmentService) {
         this.equipmentRepository = equipmentRepository;
         this.departmentService = departmentService;
     }
