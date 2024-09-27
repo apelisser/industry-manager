@@ -41,3 +41,7 @@ insert into EQUIPMENT(ID, NAME, BRAND, MODEL, SERIAL_NUMBER, DESCRIPTION, DEPART
 
 insert into EQUIPMENT_PIECE (ID, NAME, CAPACITY, DESCRIPTION, EQUIPMENT_ID) values (1, 'Via-01', '16000', 'envasa 16 mil litros por hora', 1);
 insert into EQUIPMENT_PIECE (ID, NAME, CAPACITY, DESCRIPTION, EQUIPMENT_ID) values (2, 'Via-01', '7000', 'envasa 07 mil litros por hora', 2);
+
+insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (1, 'Parada externa à fábrica', 'pef', null, 1);
+insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (2, 'Parada externa à linha', 'pel', null, 1);
+insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (3, 'Parada devido a linha', 'pdl', null, 1);
