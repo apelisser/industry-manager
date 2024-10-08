@@ -42,6 +42,11 @@ insert into EQUIPMENT(ID, NAME, BRAND, MODEL, SERIAL_NUMBER, DESCRIPTION, DEPART
 insert into EQUIPMENT_PIECE (ID, NAME, CAPACITY, DESCRIPTION, EQUIPMENT_ID) values (1, 'Via-01', '16000', 'envasa 16 mil litros por hora', 1);
 insert into EQUIPMENT_PIECE (ID, NAME, CAPACITY, DESCRIPTION, EQUIPMENT_ID) values (2, 'Via-01', '7000', 'envasa 07 mil litros por hora', 2);
 
-insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (1, 'Parada externa à fábrica', 'pef', null, 1);
-insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (2, 'Parada externa à linha', 'pel', null, 1);
-insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (3, 'Parada devido a linha', 'pdl', null, 1);
+insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) values (1, 'Parada externa à fábrica', 'pef', null, 1);
+insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) values (2, 'Parada externa à linha', 'pel', null, 1);
+insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) values (3, 'Parada devido a linha', 'pdl', null, 1);
+
+insert into EVENT_REASON (ID, NAME, ABBREVIATION, OBSERVATION, EVENT_TYPE_ID) values (1, 'Falta de energia', 'fen', null, 1);
+insert into EVENT_REASON (ID, NAME, ABBREVIATION, OBSERVATION, EVENT_TYPE_ID) values (2, 'Falta de água gelada', 'fag', null, 2);
+insert into EVENT_REASON (ID, NAME, ABBREVIATION, OBSERVATION, EVENT_TYPE_ID) values (3, 'Erro operacional', 'eop', null, 3);
+insert into EVENT_REASON (ID, NAME, ABBREVIATION, OBSERVATION, EVENT_TYPE_ID) values (4, 'Perda de pressão', 'ppr', null, 3);
