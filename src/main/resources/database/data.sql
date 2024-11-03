@@ -45,3 +45,12 @@ insert into EQUIPMENT_PIECE (ID, NAME, CAPACITY, DESCRIPTION, EQUIPMENT_ID) valu
 insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (1, 'Parada externa à fábrica', 'pef', null, 1);
 insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (2, 'Parada externa à linha', 'pel', null, 1);
 insert into EVENT_TYPE (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID) VALUES (3, 'Parada devido a linha', 'pdl', null, 1);
+
+insert into EVENT (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID, PARENT_EVENT_ID, STATUS) VALUES (1, 'Parada externa à fábrica', 'pef', null, 1, null, 'ACTIVE');
+insert into EVENT (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID, PARENT_EVENT_ID, STATUS) VALUES (2, 'Parada externa à linha', 'pel', null, 1, null, 'ACTIVE');
+insert into EVENT (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID, PARENT_EVENT_ID, STATUS) VALUES (3, 'Parada devido a linha', 'pdl', null, 1, null, 'ACTIVE');
+insert into EVENT (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID, PARENT_EVENT_ID, STATUS) VALUES (4, 'Falta de energia', 'fen', null, 1, 1, 'ACTIVE');
+insert into EVENT (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID, PARENT_EVENT_ID, STATUS) VALUES (5, 'Falta de água gelada', 'fag', null, 1, 2, 'ACTIVE');
+insert into EVENT (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID, PARENT_EVENT_ID, STATUS) VALUES (6, 'Erro operacional', 'eop', null, 1, 3, 'ACTIVE');
+insert into EVENT (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID, PARENT_EVENT_ID, STATUS) VALUES (7, 'Final de ciclo', 'fdc', null, 1, 3, 'ACTIVE');
+insert into EVENT (ID, NAME, ABBREVIATION, OBSERVATION, COMPANY_ID, PARENT_EVENT_ID, STATUS) VALUES (8, 'CIP programado', 'cpr', null, 1, 7, 'ACTIVE');
