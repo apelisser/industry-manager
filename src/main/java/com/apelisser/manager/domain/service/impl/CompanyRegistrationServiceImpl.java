@@ -1,8 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.exception.CompanyNotFoundException;
 import com.apelisser.manager.domain.exception.EntityInUseException;
-import com.apelisser.manager.domain.exception.StateNotFoundException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.Company;
 import com.apelisser.manager.domain.model.Person;
 import com.apelisser.manager.domain.repository.CompanyRepository;
@@ -39,7 +38,7 @@ public class CompanyRegistrationServiceImpl implements CompanyRegistrationServic
             companyRepository.deleteById(companyId);
             companyRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new StateNotFoundException(companyId, e);
+            throw new EntityNotFoundException(Company.class, companyId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(Company.class, companyId, e);
         }
@@ -48,7 +47,7 @@ public class CompanyRegistrationServiceImpl implements CompanyRegistrationServic
     @Override
     public Company findById(Long companyId) {
         return companyRepository.findById(companyId)
-            .orElseThrow(() -> new CompanyNotFoundException(companyId));
+            .orElseThrow(() -> new EntityNotFoundException(Company.class, companyId));
     }
 
     @Override

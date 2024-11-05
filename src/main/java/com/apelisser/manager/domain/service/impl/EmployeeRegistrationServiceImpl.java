@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.exception.EmployeeNotFoundException;
 import com.apelisser.manager.domain.exception.EntityInUseException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.Employee;
 import com.apelisser.manager.domain.model.Position;
 import com.apelisser.manager.domain.repository.EmployeeRepository;
@@ -39,7 +39,7 @@ public class EmployeeRegistrationServiceImpl implements EmployeeRegistrationServ
             employeeRepository.deleteById(employeeId);
             employeeRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new EmployeeNotFoundException(employeeId, e);
+            throw new EntityNotFoundException(Employee.class, employeeId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(Employee.class, employeeId, e);
         }
@@ -48,7 +48,7 @@ public class EmployeeRegistrationServiceImpl implements EmployeeRegistrationServ
     @Override
     public Employee findById(Long employeeId) {
         return employeeRepository.findById(employeeId)
-            .orElseThrow(() -> new EmployeeNotFoundException(employeeId));
+            .orElseThrow(() -> new EntityNotFoundException(Employee.class, employeeId));
     }
 
     @Override

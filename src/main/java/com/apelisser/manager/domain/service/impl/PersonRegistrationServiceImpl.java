@@ -1,10 +1,8 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.exception.CountryNotFoundException;
 import com.apelisser.manager.domain.exception.EntityInUseException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.exception.PersonInvalidException;
-import com.apelisser.manager.domain.exception.PersonNotFoundException;
-import com.apelisser.manager.domain.model.Country;
 import com.apelisser.manager.domain.model.Person;
 import com.apelisser.manager.domain.repository.PersonRepository;
 import com.apelisser.manager.domain.service.PersonRegistrationService;
@@ -37,16 +35,16 @@ public class PersonRegistrationServiceImpl implements PersonRegistrationService 
             personRepository.deleteById(personId);
             personRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new CountryNotFoundException(personId, e);
+            throw new EntityNotFoundException(Person.class, personId, e);
         } catch (DataIntegrityViolationException e) {
-            throw new EntityInUseException(Country.class, personId, e);
+            throw new EntityInUseException(Person.class, personId, e);
         }
     }
 
     @Override
     public Person findById(Long personId) {
         return personRepository.findById(personId)
-            .orElseThrow(() -> new PersonNotFoundException(personId));
+            .orElseThrow(() -> new EntityNotFoundException(Person.class, personId));
     }
 
     @Override

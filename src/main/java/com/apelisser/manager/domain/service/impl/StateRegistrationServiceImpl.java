@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
-import com.apelisser.manager.domain.exception.StateNotFoundException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.Country;
 import com.apelisser.manager.domain.model.State;
 import com.apelisser.manager.domain.repository.StateRepository;
@@ -38,7 +38,7 @@ public class StateRegistrationServiceImpl implements StateRegistrationService {
             stateRepository.deleteById(stateId);
             stateRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new StateNotFoundException(stateId, e);
+            throw new EntityNotFoundException(State.class, stateId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(State.class, stateId, e);
         }
@@ -47,7 +47,7 @@ public class StateRegistrationServiceImpl implements StateRegistrationService {
     @Override
     public State findById(Long stateId) {
         return stateRepository.findById(stateId)
-            .orElseThrow(() -> new StateNotFoundException(stateId));
+            .orElseThrow(() -> new EntityNotFoundException(State.class, stateId));
     }
 
     @Override

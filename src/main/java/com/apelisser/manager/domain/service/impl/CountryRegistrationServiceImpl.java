@@ -1,8 +1,8 @@
 package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.Country;
-import com.apelisser.manager.domain.exception.CountryNotFoundException;
 import com.apelisser.manager.domain.repository.CountryRepository;
 import com.apelisser.manager.domain.service.CountryRegistrationService;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -31,7 +31,7 @@ public class CountryRegistrationServiceImpl implements CountryRegistrationServic
             countryRepository.deleteById(countryId);
             countryRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new CountryNotFoundException(countryId, e);
+            throw new EntityNotFoundException(Country.class, countryId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(Country.class, countryId, e);
         }
@@ -40,7 +40,7 @@ public class CountryRegistrationServiceImpl implements CountryRegistrationServic
     @Override
     public Country findById(Long countryId) {
         return countryRepository.findById(countryId)
-            .orElseThrow(() -> new CountryNotFoundException(countryId));
+            .orElseThrow(() -> new EntityNotFoundException(Country.class, countryId));
     }
 
     @Override

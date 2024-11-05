@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
-import com.apelisser.manager.domain.exception.PositionNotFoundExeption;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.Company;
 import com.apelisser.manager.domain.model.Position;
 import com.apelisser.manager.domain.repository.PositionRepository;
@@ -46,7 +46,7 @@ public class PositionRegistrationServiceImpl implements PositionRegistrationServ
             positionRepository.deleteById(positionId);
             positionRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new PositionNotFoundExeption(positionId, e);
+            throw new EntityNotFoundException(Position.class, positionId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(Position.class, positionId, e);
         }
@@ -55,7 +55,7 @@ public class PositionRegistrationServiceImpl implements PositionRegistrationServ
     @Override
     public Position findById(Long positionId) {
         return positionRepository.findById(positionId)
-            .orElseThrow(() -> new PositionNotFoundExeption(positionId));
+            .orElseThrow(() -> new EntityNotFoundException(Position.class, positionId));
     }
 
     @Override
