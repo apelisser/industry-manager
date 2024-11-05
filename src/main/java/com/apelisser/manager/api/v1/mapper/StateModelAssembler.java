@@ -1,7 +1,7 @@
 package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.StateModel;
-import com.apelisser.manager.domain.model.State;
+import com.apelisser.manager.domain.entities.State;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

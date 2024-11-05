@@ -1,7 +1,7 @@
 package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.PositionResumeModel;
-import com.apelisser.manager.domain.model.Position;
+import com.apelisser.manager.domain.entities.Position;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
