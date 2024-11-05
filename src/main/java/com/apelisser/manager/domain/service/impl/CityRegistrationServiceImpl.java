@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.exception.CityNotFoundException;
 import com.apelisser.manager.domain.exception.EntityInUseException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.City;
 import com.apelisser.manager.domain.model.State;
 import com.apelisser.manager.domain.repository.CityRepository;
@@ -38,7 +38,7 @@ public class CityRegistrationServiceImpl implements CityRegistrationService {
             cityRepository.deleteById(cityId);
             cityRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new CityNotFoundException(cityId, e);
+            throw new EntityNotFoundException(City.class, cityId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(City.class, cityId, e);
         }
@@ -47,7 +47,7 @@ public class CityRegistrationServiceImpl implements CityRegistrationService {
     @Override
     public City findById(Long cityId) {
         return cityRepository.findById(cityId)
-            .orElseThrow(() -> new CityNotFoundException(cityId));
+            .orElseThrow(() -> new EntityNotFoundException(City.class, cityId));
     }
 
     @Override

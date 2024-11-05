@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.exception.DepartmentNotFoundException;
 import com.apelisser.manager.domain.exception.EntityInUseException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.Company;
 import com.apelisser.manager.domain.model.Department;
 import com.apelisser.manager.domain.repository.DepartmentRepository;
@@ -39,7 +39,7 @@ public class DepartmentRegistrationServiceImpl implements DepartmentRegistration
             departmentRepository.deleteById(departmentId);
             departmentRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new DepartmentNotFoundException(departmentId, e);
+            throw new EntityNotFoundException(Department.class, departmentId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(Department.class, departmentId, e);
         }
@@ -48,7 +48,7 @@ public class DepartmentRegistrationServiceImpl implements DepartmentRegistration
     @Override
     public Department findById(Long departmentId) {
         return departmentRepository.findById(departmentId)
-            .orElseThrow(() -> new DepartmentNotFoundException(departmentId));
+            .orElseThrow(() -> new EntityNotFoundException(Department.class, departmentId));
     }
 
     @Override

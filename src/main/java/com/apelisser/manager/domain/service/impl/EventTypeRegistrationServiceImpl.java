@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
-import com.apelisser.manager.domain.exception.EventTypeNotFoundException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.Company;
 import com.apelisser.manager.domain.model.EventType;
 import com.apelisser.manager.domain.repository.EventTypeRepository;
@@ -39,7 +39,7 @@ public class EventTypeRegistrationServiceImpl implements EventTypeRegistrationSe
             eventTypeRepository.deleteById(eventTypeId);
             eventTypeRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new EventTypeNotFoundException(eventTypeId, e);
+            throw new EntityNotFoundException(EventType.class, eventTypeId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(EventType.class, eventTypeId, e);
         }
@@ -48,7 +48,7 @@ public class EventTypeRegistrationServiceImpl implements EventTypeRegistrationSe
     @Override
     public EventType findById(Long eventTypeId) {
         return eventTypeRepository.findById(eventTypeId)
-            .orElseThrow(() -> new EventTypeNotFoundException(eventTypeId));
+            .orElseThrow(() -> new EntityNotFoundException(EventType.class, eventTypeId));
     }
 
     @Override

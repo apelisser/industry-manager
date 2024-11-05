@@ -2,7 +2,7 @@ package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.enums.RecordStatus;
 import com.apelisser.manager.domain.exception.EntityInUseException;
-import com.apelisser.manager.domain.exception.EventNotFoundException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.exception.OperationNotAllowedException;
 import com.apelisser.manager.domain.model.Company;
 import com.apelisser.manager.domain.model.Event;
@@ -45,7 +45,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
             eventRepository.deleteById(eventId);
             eventRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new EventNotFoundException(eventId, e);
+            throw new EntityNotFoundException(Event.class, eventId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(Event.class, eventId, e);
         }
@@ -54,7 +54,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
     @Override
     public Event findById(Long eventId) {
         return eventRepository.findById(eventId)
-            .orElseThrow(() -> new EventNotFoundException(eventId));
+            .orElseThrow(() -> new EntityNotFoundException(Event.class, eventId));
     }
 
     @Override

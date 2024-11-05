@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
-import com.apelisser.manager.domain.exception.EquipmentNotFoundException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.model.Department;
 import com.apelisser.manager.domain.model.Equipment;
 import com.apelisser.manager.domain.repository.EquipmentRepository;
@@ -41,7 +41,7 @@ public class EquipmentRegistrationServiceImpl implements EquipmentRegistrationSe
             equipmentRepository.deleteById(equipmentId);
             equipmentRepository.flush();
         } catch (EmptyResultDataAccessException e) {
-            throw new EquipmentNotFoundException(equipmentId, e);
+            throw new EntityNotFoundException(Equipment.class, equipmentId, e);
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(Equipment.class, equipmentId, e);
         }
@@ -50,7 +50,7 @@ public class EquipmentRegistrationServiceImpl implements EquipmentRegistrationSe
     @Override
     public Equipment findById(Long equipmentId) {
         return equipmentRepository.findById(equipmentId)
-            .orElseThrow(() -> new EquipmentNotFoundException(equipmentId));
+            .orElseThrow(() -> new EntityNotFoundException(Equipment.class, equipmentId));
     }
 
     @Override
