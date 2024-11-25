@@ -40,6 +40,13 @@ public class Equipment {
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
+    public Equipment() {
+    }
+
+    public Equipment(Long id) {
+        this.id = id;
+    }
+
     @Getter
     @Setter
     @ToString

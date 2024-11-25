@@ -20,4 +20,10 @@ public final class Assert {
         }
     }
 
+    public static void isTrue(boolean result, String message) {
+        if (!result) {
+            throw new IllegalArgumentException(message);
+        }
+    }
+
 }

@@ -39,4 +39,11 @@ public class Employee {
     @JoinColumn(name = "position_id", nullable = false)
     private Position position;
 
+    public Employee() {
+    }
+
+    public Employee(Long id) {
+        this.id = id;
+    }
+
 }

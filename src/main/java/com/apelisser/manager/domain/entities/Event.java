@@ -34,6 +34,13 @@ public class Event {
     @Column(nullable = false)
     private RecordStatus status = RecordStatus.ACTIVE;
 
+    public Event() {
+    }
+
+    public Event(Long id) {
+        this.id = id;
+    }
+
     public boolean isRoot() {
         return parent == null;
     }
