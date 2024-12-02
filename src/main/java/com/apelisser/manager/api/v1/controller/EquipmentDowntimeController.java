@@ -2,9 +2,12 @@ package com.apelisser.manager.api.v1.controller;
 
 import com.apelisser.manager.api.v1.mapper.EquipmentDowntimeInputDisassembler;
 import com.apelisser.manager.api.v1.mapper.EquipmentDowntimeModelAssembler;
+import com.apelisser.manager.api.v1.mapper.EventTimeInputDisassembler;
 import com.apelisser.manager.api.v1.model.EquipmentDowntimeModel;
 import com.apelisser.manager.api.v1.model.input.EquipmentDowntimeInput;
+import com.apelisser.manager.api.v1.model.input.EventTimeInput;
 import com.apelisser.manager.domain.entities.EquipmentDowntime;
+import com.apelisser.manager.domain.entities.EventTime;
 import com.apelisser.manager.domain.services.EquipmentDowntimeRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,12 +30,15 @@ public class EquipmentDowntimeController {
     private final EquipmentDowntimeRegistrationService downtimeService;
     private final EquipmentDowntimeModelAssembler downtimeAssembler;
     private final EquipmentDowntimeInputDisassembler downtimeDisassembler;
+    private final EventTimeInputDisassembler eventTimeDisassembler;
 
     public EquipmentDowntimeController(EquipmentDowntimeRegistrationService downtimeService,
-            EquipmentDowntimeModelAssembler downtimeAssembler, EquipmentDowntimeInputDisassembler downtimeDisassembler) {
+            EquipmentDowntimeModelAssembler downtimeAssembler, EquipmentDowntimeInputDisassembler downtimeDisassembler,
+            EventTimeInputDisassembler eventTimeDisassembler) {
         this.downtimeService = downtimeService;
         this.downtimeDisassembler = downtimeDisassembler;
         this.downtimeAssembler = downtimeAssembler;
+        this.eventTimeDisassembler = eventTimeDisassembler;
     }
 
     @GetMapping
@@ -47,6 +53,15 @@ public class EquipmentDowntimeController {
         EquipmentDowntime domainObject = downtimeDisassembler.toDomainObject(downtimeInput);
         EquipmentDowntime savedDowntime = downtimeService.save(domainObject);
         return downtimeAssembler.toModel(savedDowntime);
+    }
+
+    @PostMapping(path = "/{equipmentDowntimeId}/related-events", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public EquipmentDowntimeModel addRelatedEvent(@PathVariable Long equipmentDowntimeId,
+            @RequestBody List<EventTimeInput> eventsTimeInput) {
+        List<EventTime> eventsTime = eventTimeDisassembler.toCollectionDomain(eventsTimeInput);
+        EquipmentDowntime updatedDowntime = downtimeService.addRelatedEventsTime(equipmentDowntimeId, eventsTime);
+        return downtimeAssembler.toModel(updatedDowntime);
     }
 
     @DeleteMapping(path = "/{equipmentDowntimeId}")

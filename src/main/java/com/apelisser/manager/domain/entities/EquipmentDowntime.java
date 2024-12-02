@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static jakarta.persistence.CascadeType.*;
-
 @Getter
 @Setter
 @Entity
@@ -44,7 +42,7 @@ public class EquipmentDowntime {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @OneToMany(cascade = {PERSIST, REMOVE, DETACH}, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "equipment_downtime_id", nullable = false)
     private final List<EventTime> relatedEvents = new ArrayList<>();
 
@@ -108,6 +106,50 @@ public class EquipmentDowntime {
         } else {
             duration = null;
         }
+    }
+
+    /**
+     * Determines if there is an overlap between two given EventTime objects.
+     *
+     * <p>
+     * This method takes two EventTime objects and checks whether the time intervals of the two events overlap.
+     * </p>
+     *
+     * @param eventTime the current EventTime object.
+     * @param otherEventTime the other EventTime object to check for overlap.
+     * @return true if the two events overlap, false otherwise.
+     */
+    public static boolean hasOverlap(EventTime eventTime, EventTime otherEventTime) {
+        OffsetDateTime startTime = eventTime.getStartTime();
+        OffsetDateTime endTime = eventTime.getEndTime();
+
+        OffsetDateTime otherStartTime = otherEventTime.getStartTime();
+        OffsetDateTime otherEndTime = otherEventTime.getEndTime();
+
+        if (endTime != null && otherEndTime!= null) {
+            /*
+            Possible scenarios:
+
+            with:
+            startTime = 4
+            endTime = 7
+
+            // collide
+            otherStartTime = 3, otherEndTime = 5 :: (3 < 7 && 5 > 4) = true
+            otherStartTime = 5, otherEndTime = 8 :: (5 < 7 && 8 > 4) = true
+            otherStartTime = 5, otherEndTime = 6 :: (5 < 7 && 6 > 4) = true
+            otherStartTime = 4, otherEndTime = 7 :: (4 < 7 && 7 > 4) = true
+            otherStartTime = 3, otherEndTime = 8 :: (3 < 7 && 8 > 4) = true
+
+            // do not collide
+            otherStartTime = 0, otherEndTime = 3 :: (0 < 7 && 3 > 4) = false
+            otherStartTime = 0, otherEndTime = 4 :: (0 < 7 && 4 > 4) = false
+            otherStartTime = 7, otherEndTime = 8 :: (7 < 7 && 8 > 4) = false
+            otherStartTime = 8, otherEndTime = 9 :: (8 < 7 && 9 > 4) = false
+             */
+            return otherStartTime.isBefore(endTime) && otherEndTime.isAfter(startTime);
+        }
+        return otherStartTime.isEqual(startTime);
     }
 
 }

@@ -4,6 +4,7 @@ import com.apelisser.manager.domain.entities.Employee;
 import com.apelisser.manager.domain.entities.Equipment;
 import com.apelisser.manager.domain.entities.EquipmentDowntime;
 import com.apelisser.manager.domain.entities.Event;
+import com.apelisser.manager.domain.entities.EventTime;
 import com.apelisser.manager.domain.exceptions.EntityInUseException;
 import com.apelisser.manager.domain.exceptions.EntityNotFoundException;
 import com.apelisser.manager.domain.repositories.EquipmentDowntimeRepository;
@@ -28,17 +29,19 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
     private final EquipmentDowntimeRepository downtimeRepository;
     private final DatabaseDowntimeValidationService databaseValidationService;
     private final LocalDowntimeValidationService localValidationService;
+    private final EventRegistrationService eventRegistrationService;
 
     public EquipmentDowntimeRegistrationServiceImpl(EventRegistrationService eventService,
             EmployeeRegistrationService employeeService, EquipmentRegistrationService equipmentService,
             EquipmentDowntimeRepository downtimeRepository, DatabaseDowntimeValidationService databaseValidationService,
-            LocalDowntimeValidationService localValidationService) {
+            LocalDowntimeValidationService localValidationService, EventRegistrationService eventRegistrationService) {
         this.eventService = eventService;
         this.employeeService = employeeService;
         this.equipmentService = equipmentService;
         this.downtimeRepository = downtimeRepository;
         this.databaseValidationService = databaseValidationService;
         this.localValidationService = localValidationService;
+        this.eventRegistrationService = eventRegistrationService;
     }
 
     @Override
@@ -59,6 +62,29 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(EquipmentDowntime.class, equipmentDowntimeId, e);
         }
+    }
+
+    @Override
+    public EquipmentDowntime addRelatedEventsTime(Long equipmentDowntimeId, List<EventTime> eventsTime) {
+        // Validate the list of EventTime objects against each other
+        localValidationService.validateEventsTime(eventsTime);
+
+        // Set the event property of each EventTime to the corresponding event
+        eventsTime.forEach(eventTime -> {
+            Long eventId = eventTime.getEvent().getId();
+            Event event = eventRegistrationService.findById(eventId);
+            eventTime.setEvent(event);
+        });
+
+        // Retrieve the EquipmentDowntime entity by its ID
+        EquipmentDowntime downtime = findById(equipmentDowntimeId);
+
+        // Validate each EventTime against the equipment downtime
+        eventsTime.forEach(eventTime ->
+            localValidationService.validateEventTimeForDowntime(eventTime, downtime));
+
+        downtime.getRelatedEvents().addAll(eventsTime);
+        return downtimeRepository.save(downtime);
     }
 
     @Override
@@ -83,8 +109,8 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
         equipmentDowntime.setEmployee(employee);
 
         equipmentDowntime.getRelatedEvents().forEach(eventTime -> {
-            Event relatedEvent = eventService.findById(eventTime.getEvent().getId());
-            eventTime.setEvent(relatedEvent);
+            Event event = eventService.findById(eventTime.getEvent().getId());
+            eventTime.setEvent(event);
         });
     }
 

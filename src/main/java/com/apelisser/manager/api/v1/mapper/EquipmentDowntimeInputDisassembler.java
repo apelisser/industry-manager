@@ -15,13 +15,19 @@ import java.util.List;
 @Component
 public class EquipmentDowntimeInputDisassembler {
 
+    private final EventTimeInputDisassembler eventTimeInputDisassembler;
+
+    public EquipmentDowntimeInputDisassembler(EventTimeInputDisassembler eventTimeInputDisassembler) {
+        this.eventTimeInputDisassembler = eventTimeInputDisassembler;
+    }
+
     public EquipmentDowntime toDomainObject(EquipmentDowntimeInput downtimeInput) {
         EquipmentDowntime downtime = getEquipmentDowntime(downtimeInput);
 
         List<EventTimeInput> relatedEventsInput = downtimeInput.getRelatedEvents();
         if (!CollectionUtils.isEmpty(relatedEventsInput)) {
             List<EventTime> eventTimeList = relatedEventsInput.stream()
-                .map(this::toDomainObject)
+                .map(eventTimeInputDisassembler::toDomain)
                 .toList();
 
             downtime.getRelatedEvents().addAll(eventTimeList);
@@ -43,19 +49,6 @@ public class EquipmentDowntimeInputDisassembler {
         downtime.setEndTime(downtimeInput.getEndTime());
         downtime.setObservation(downtimeInput.getObservation());
         return downtime;
-    }
-
-    private EventTime toDomainObject(EventTimeInput eventTimeInput) {
-        Event event = new Event(eventTimeInput.getEventId());
-
-        EventTime eventTime = new EventTime();
-        eventTime.setEvent(event);
-        eventTime.setType(eventTimeInput.getType());
-        eventTime.setStartTime(eventTimeInput.getStartTime());
-        eventTime.setEndTime(eventTimeInput.getEndTime());
-        eventTime.setObservation(eventTimeInput.getObservation());
-
-        return eventTime;
     }
 
 }
