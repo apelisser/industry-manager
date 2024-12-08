@@ -108,6 +108,9 @@ public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidati
         // Check that none of the events have null properties
         eventsTime.forEach(this::validateNullProperties);
 
+        // Check if events range is valid
+        eventsTime.forEach(this::validateEventTimeRange);
+
         // Filter the events to get only those of type INTERNAL and validate for overlaps
         if (eventsTime.size() > 1) {
             List<EventTime> internalEventsTime = eventsTime.stream()
