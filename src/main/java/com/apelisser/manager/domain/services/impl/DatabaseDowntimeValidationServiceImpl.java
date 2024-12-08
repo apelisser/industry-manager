@@ -4,6 +4,7 @@ import com.apelisser.manager.domain.entities.EquipmentDowntime;
 import com.apelisser.manager.domain.exceptions.OverlapException;
 import com.apelisser.manager.domain.services.DatabaseDowntimeValidationService;
 import com.apelisser.manager.domain.services.EquipmentDowntimeRegistrationService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,7 +17,7 @@ public class DatabaseDowntimeValidationServiceImpl implements DatabaseDowntimeVa
 
     private final EquipmentDowntimeRegistrationService downtimeService;
 
-    public DatabaseDowntimeValidationServiceImpl(EquipmentDowntimeRegistrationService downtimeService) {
+    public DatabaseDowntimeValidationServiceImpl(@Lazy EquipmentDowntimeRegistrationService downtimeService) {
         this.downtimeService = downtimeService;
     }
 
