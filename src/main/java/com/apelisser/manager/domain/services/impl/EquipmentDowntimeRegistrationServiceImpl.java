@@ -19,6 +19,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDowntimeRegistrationService {
@@ -94,11 +95,22 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
     }
 
     @Override
+    public Optional<EquipmentDowntime> findFirstOverlap(EquipmentDowntime equipmentDowntime) {
+        return downtimeRepository.findFirstOverlap(equipmentDowntime);
+    }
+
+    @Override
+    public List<EquipmentDowntime> findAllOverlaps(EquipmentDowntime equipmentDowntime) {
+        return downtimeRepository.findAllOverlaps(equipmentDowntime);
+    }
+
+    @Override
     public List<EquipmentDowntime> findAll() {
         return downtimeRepository.findAll();
     }
 
-    public void loadRelationships(EquipmentDowntime equipmentDowntime) {
+
+    private void loadRelationships(EquipmentDowntime equipmentDowntime) {
         Equipment equipment = equipmentService.findById(equipmentDowntime.getEquipment().getId());
         equipmentDowntime.setEquipment(equipment);
 
