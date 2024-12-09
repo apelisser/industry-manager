@@ -14,6 +14,7 @@ import com.apelisser.manager.domain.services.EquipmentDowntimeRegistrationServic
 import com.apelisser.manager.domain.services.EquipmentRegistrationService;
 import com.apelisser.manager.domain.services.EventRegistrationService;
 import com.apelisser.manager.domain.services.LocalDowntimeValidationService;
+import com.apelisser.manager.domain.util.Assert;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -66,6 +67,29 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
     }
 
     @Override
+    public void deleteRelatedEventTime(Long equipmentDowntimeId, Long eventTimeId) {
+        Assert.notNull(equipmentDowntimeId, "The equipment downtime id must not be null.");
+        Assert.notNull(eventTimeId, "The event time id must not be null.");
+
+        EquipmentDowntime equipmentDowntime = findById(equipmentDowntimeId);
+
+        EventTime eventTime = equipmentDowntime.getRelatedEvents().stream()
+            .filter(currentEventTime -> currentEventTime.getId().equals(eventTimeId))
+            .findFirst()
+            .orElseThrow(() -> {
+                String message = String.format(
+                    "The event time with id %d is not related to the equipment downtime with id %d.",
+                    eventTimeId,
+                    equipmentDowntimeId
+                );
+                return new EntityNotFoundException(EventTime.class, eventTimeId, message);
+            });
+
+        equipmentDowntime.getRelatedEvents().remove(eventTime);
+        downtimeRepository.save(equipmentDowntime);
+    }
+
+    @Override
     public EquipmentDowntime addRelatedEventsTime(Long equipmentDowntimeId, List<EventTime> eventsTime) {
         // Validate the list of EventTime objects against each other
         localValidationService.validateEventsTime(eventsTime);
@@ -108,7 +132,6 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
     public List<EquipmentDowntime> findAll() {
         return downtimeRepository.findAll();
     }
-
 
     private void loadRelationships(EquipmentDowntime equipmentDowntime) {
         Equipment equipment = equipmentService.findById(equipmentDowntime.getEquipment().getId());

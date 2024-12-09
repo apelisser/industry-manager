@@ -64,6 +64,13 @@ public class EquipmentDowntimeController {
         return downtimeAssembler.toModel(updatedDowntime);
     }
 
+    @DeleteMapping(path = "/{equipmentDowntimeId}/related-events/{eventTimeId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteRelatedEvent(@PathVariable Long equipmentDowntimeId,
+            @PathVariable Long eventTimeId) {
+        downtimeService.deleteRelatedEventTime(equipmentDowntimeId, eventTimeId);
+    }
+
     @DeleteMapping(path = "/{equipmentDowntimeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long equipmentDowntimeId) {

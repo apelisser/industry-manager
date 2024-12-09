@@ -12,6 +12,8 @@ public interface EquipmentDowntimeRegistrationService {
 
     void delete(Long equipmentDowntimeId);
 
+    void deleteRelatedEventTime(Long equipmentDowntimeId, Long eventTimeId);
+
     EquipmentDowntime addRelatedEventsTime(Long equipmentDowntimeId, List<EventTime> eventsTime);
 
     EquipmentDowntime findById(Long equipmentDowntimeId);
