@@ -1,6 +1,6 @@
 package com.apelisser.manager.api.v1.model;
 
-import com.apelisser.manager.domain.enums.RecordStatus;
+import com.apelisser.manager.domain.models.enums.RecordStatus;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
