@@ -1,0 +1,18 @@
+networks:
+  industry-manager-network:
+    driver: bridge
+
+name: industry-manager
+
+services:
+  postgres-db:
+    image: postgres:16-alpine
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: industry_manager
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+    networks:
+      - industry-manager-network
