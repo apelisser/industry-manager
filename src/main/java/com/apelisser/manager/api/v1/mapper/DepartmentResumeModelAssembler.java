@@ -1,7 +1,7 @@
 package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.DepartmentResumeModel;
-import com.apelisser.manager.domain.entities.Department;
+import com.apelisser.manager.domain.entity.Department;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

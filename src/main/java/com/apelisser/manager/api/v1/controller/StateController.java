@@ -18,8 +18,8 @@ import com.apelisser.manager.api.v1.mapper.StateInputDisassembler;
 import com.apelisser.manager.api.v1.mapper.StateModelAssembler;
 import com.apelisser.manager.api.v1.model.StateModel;
 import com.apelisser.manager.api.v1.model.input.StateInput;
-import com.apelisser.manager.domain.entities.State;
-import com.apelisser.manager.domain.services.StateRegistrationService;
+import com.apelisser.manager.domain.entity.State;
+import com.apelisser.manager.domain.service.StateRegistrationService;
 
 @RestController
 @RequestMapping(

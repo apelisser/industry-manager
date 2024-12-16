@@ -2,11 +2,11 @@ package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.input.EquipmentDowntimeInput;
 import com.apelisser.manager.api.v1.model.input.EventTimeInput;
-import com.apelisser.manager.domain.entities.Employee;
-import com.apelisser.manager.domain.entities.Equipment;
-import com.apelisser.manager.domain.entities.EquipmentDowntime;
-import com.apelisser.manager.domain.entities.Event;
-import com.apelisser.manager.domain.entities.EventTime;
+import com.apelisser.manager.domain.entity.Employee;
+import com.apelisser.manager.domain.entity.Equipment;
+import com.apelisser.manager.domain.entity.EquipmentDowntime;
+import com.apelisser.manager.domain.entity.Event;
+import com.apelisser.manager.domain.entity.EventTime;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 

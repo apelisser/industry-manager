@@ -1,7 +1,7 @@
 package com.apelisser.manager.infrastructure.repository;
 
-import com.apelisser.manager.domain.entities.EquipmentDowntime;
-import com.apelisser.manager.domain.repositories.EquipmentDowntimeRepositoryQueries;
+import com.apelisser.manager.domain.entity.EquipmentDowntime;
+import com.apelisser.manager.domain.repository.EquipmentDowntimeRepositoryQueries;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;

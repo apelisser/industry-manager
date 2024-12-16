@@ -1,6 +1,6 @@
 package com.apelisser.manager.api.v1.model.input;
 
-import com.apelisser.manager.domain.models.enums.EventType;
+import com.apelisser.manager.domain.model.enums.EventType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

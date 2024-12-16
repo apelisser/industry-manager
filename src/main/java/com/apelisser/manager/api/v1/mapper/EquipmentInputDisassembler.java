@@ -2,8 +2,8 @@ package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.input.EquipmentInput;
 import com.apelisser.manager.api.v1.model.input.EquipmentUpdateInput;
-import com.apelisser.manager.domain.entities.Department;
-import com.apelisser.manager.domain.entities.Equipment;
+import com.apelisser.manager.domain.entity.Department;
+import com.apelisser.manager.domain.entity.Equipment;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

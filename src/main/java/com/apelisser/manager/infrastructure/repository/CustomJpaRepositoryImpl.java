@@ -1,6 +1,6 @@
 package com.apelisser.manager.infrastructure.repository;
 
-import com.apelisser.manager.domain.repositories.CustomJpaRepository;
+import com.apelisser.manager.domain.repository.CustomJpaRepository;
 import jakarta.persistence.EntityManager;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
