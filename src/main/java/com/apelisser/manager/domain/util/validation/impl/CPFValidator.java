@@ -13,14 +13,14 @@ public class CPFValidator implements Validatable<String> {
     }
 
     private boolean validate(final String cpf) {
-        int firstDigit = calculateCpfDigit(cpf, 9, 1);
-        int secondDigit = calculateCpfDigit(cpf, 10, 0);
+        int firstDigit = calculateDigit(cpf, 9, 1);
+        int secondDigit = calculateDigit(cpf, 10, 0);
 
         return Character.getNumericValue(cpf.charAt(9)) == firstDigit
             && Character.getNumericValue(cpf.charAt(10)) == secondDigit;
     }
 
-    private int calculateCpfDigit(final String cpf, final int length, final int offset) {
+    private int calculateDigit(final String cpf, final int length, final int offset) {
         int sum = 0;
         for (int i = 0; i < length; i++) {
             sum += Character.getNumericValue(cpf.charAt(i)) * WEIGHTS[i + offset];
