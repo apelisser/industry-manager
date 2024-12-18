@@ -3,7 +3,7 @@ package com.apelisser.manager.domain.service.impl;
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.exception.PersonInvalidException;
-import com.apelisser.manager.domain.entity.Person;
+import com.apelisser.manager.domain.model.Person;
 import com.apelisser.manager.domain.repository.PersonRepository;
 import com.apelisser.manager.domain.service.PersonRegistrationService;
 import org.springframework.dao.DataIntegrityViolationException;

@@ -1,4 +1,4 @@
-package com.apelisser.manager.domain.entity;
+package com.apelisser.manager.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

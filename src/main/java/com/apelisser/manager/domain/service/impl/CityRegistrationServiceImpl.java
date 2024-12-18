@@ -2,8 +2,8 @@ package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
-import com.apelisser.manager.domain.entity.City;
-import com.apelisser.manager.domain.entity.State;
+import com.apelisser.manager.domain.model.City;
+import com.apelisser.manager.domain.model.State;
 import com.apelisser.manager.domain.repository.CityRepository;
 import com.apelisser.manager.domain.service.CityRegistrationService;
 import com.apelisser.manager.domain.service.StateRegistrationService;

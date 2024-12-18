@@ -1,10 +1,10 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.entity.Employee;
-import com.apelisser.manager.domain.entity.Equipment;
-import com.apelisser.manager.domain.entity.EquipmentDowntime;
-import com.apelisser.manager.domain.entity.Event;
-import com.apelisser.manager.domain.entity.EventTime;
+import com.apelisser.manager.domain.model.Employee;
+import com.apelisser.manager.domain.model.Equipment;
+import com.apelisser.manager.domain.model.EquipmentDowntime;
+import com.apelisser.manager.domain.model.Event;
+import com.apelisser.manager.domain.model.EventTime;
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.repository.EquipmentDowntimeRepository;

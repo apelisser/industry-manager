@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.entity.EquipmentDowntime;
-import com.apelisser.manager.domain.entity.EventTime;
+import com.apelisser.manager.domain.model.EquipmentDowntime;
+import com.apelisser.manager.domain.model.EventTime;
 import com.apelisser.manager.domain.exception.OutOfRangeException;
 import com.apelisser.manager.domain.exception.OverlapException;
 import com.apelisser.manager.domain.service.LocalDowntimeValidationService;
@@ -12,7 +12,7 @@ import java.time.OffsetDateTime;
 import java.util.Comparator;
 import java.util.List;
 
-import static com.apelisser.manager.domain.model.enums.EventType.INTERNAL;
+import static com.apelisser.manager.domain.enums.EventType.INTERNAL;
 
 @Service
 public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidationService {

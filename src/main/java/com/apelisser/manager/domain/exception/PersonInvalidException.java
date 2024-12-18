@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.exception;
 
-import com.apelisser.manager.domain.model.enums.PersonType;
+import com.apelisser.manager.domain.enums.PersonType;
 
 import java.io.Serial;
 

@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service;
 
-import com.apelisser.manager.domain.entity.EquipmentDowntime;
-import com.apelisser.manager.domain.entity.EventTime;
+import com.apelisser.manager.domain.model.EquipmentDowntime;
+import com.apelisser.manager.domain.model.EventTime;
 
 import java.util.List;
 import java.util.Optional;

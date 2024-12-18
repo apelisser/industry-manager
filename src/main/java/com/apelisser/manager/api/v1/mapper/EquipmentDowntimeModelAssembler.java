@@ -1,7 +1,7 @@
 package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.EquipmentDowntimeModel;
-import com.apelisser.manager.domain.entity.EquipmentDowntime;
+import com.apelisser.manager.domain.model.EquipmentDowntime;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

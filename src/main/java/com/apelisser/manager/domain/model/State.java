@@ -1,4 +1,4 @@
-package com.apelisser.manager.domain.entity;
+package com.apelisser.manager.domain.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,32 +10,22 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @Entity
-@Table(name = "address")
-public class Address {
+@Table(name = "state")
+public class State {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String street;
+    private String name;
 
-    private String number;
-
-    private String complement;
-
-    private String neighborhood;
+    private String abbrevName;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
-
-    private String zipCode;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
+    @JoinColumn(name = "country_id")
+    private Country country;
 
 }

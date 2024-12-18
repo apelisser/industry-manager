@@ -4,7 +4,7 @@ import com.apelisser.manager.api.v1.mapper.PersonInputDisassembler;
 import com.apelisser.manager.api.v1.mapper.PersonModelAssembler;
 import com.apelisser.manager.api.v1.model.PersonModel;
 import com.apelisser.manager.api.v1.model.input.PersonInput;
-import com.apelisser.manager.domain.entity.Person;
+import com.apelisser.manager.domain.model.Person;
 import com.apelisser.manager.domain.service.PersonRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

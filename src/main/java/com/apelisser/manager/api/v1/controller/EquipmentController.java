@@ -7,7 +7,7 @@ import com.apelisser.manager.api.v1.model.EquipmentModel;
 import com.apelisser.manager.api.v1.model.EquipmentResumeModel;
 import com.apelisser.manager.api.v1.model.input.EquipmentInput;
 import com.apelisser.manager.api.v1.model.input.EquipmentUpdateInput;
-import com.apelisser.manager.domain.entity.Equipment;
+import com.apelisser.manager.domain.model.Equipment;
 import com.apelisser.manager.domain.service.EquipmentRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

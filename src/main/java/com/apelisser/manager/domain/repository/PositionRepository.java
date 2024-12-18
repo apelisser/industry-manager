@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.repository;
 
-import com.apelisser.manager.domain.entity.Position;
+import com.apelisser.manager.domain.model.Position;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;

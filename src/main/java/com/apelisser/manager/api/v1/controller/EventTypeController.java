@@ -7,7 +7,7 @@ import com.apelisser.manager.api.v1.model.EventTypeModel;
 import com.apelisser.manager.api.v1.model.EventTypeResumeModel;
 import com.apelisser.manager.api.v1.model.input.EventTypeInput;
 import com.apelisser.manager.api.v1.model.input.EventTypeUpdateInput;
-import com.apelisser.manager.domain.entity.EventType;
+import com.apelisser.manager.domain.model.EventType;
 import com.apelisser.manager.domain.service.EventTypeRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

@@ -1,8 +1,8 @@
-package com.apelisser.manager.domain.model.enums;
+package com.apelisser.manager.domain.enums;
 
-import com.apelisser.manager.domain.model.validate.Validatable;
-import com.apelisser.manager.domain.model.validate.impl.CNPJValidator;
-import com.apelisser.manager.domain.model.validate.impl.CPFValidator;
+import com.apelisser.manager.domain.util.validation.Validatable;
+import com.apelisser.manager.domain.util.validation.impl.CNPJValidator;
+import com.apelisser.manager.domain.util.validation.impl.CPFValidator;
 
 public enum PersonType {
 

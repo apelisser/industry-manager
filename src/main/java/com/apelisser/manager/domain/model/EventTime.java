@@ -1,6 +1,6 @@
-package com.apelisser.manager.domain.entity;
+package com.apelisser.manager.domain.model;
 
-import com.apelisser.manager.domain.model.enums.EventType;
+import com.apelisser.manager.domain.enums.EventType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

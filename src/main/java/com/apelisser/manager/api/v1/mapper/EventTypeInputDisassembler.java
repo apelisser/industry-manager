@@ -2,7 +2,7 @@ package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.input.EventTypeInput;
 import com.apelisser.manager.api.v1.model.input.EventTypeUpdateInput;
-import com.apelisser.manager.domain.entity.EventType;
+import com.apelisser.manager.domain.model.EventType;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

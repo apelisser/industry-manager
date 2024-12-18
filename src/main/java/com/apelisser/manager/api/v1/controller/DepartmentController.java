@@ -6,7 +6,7 @@ import com.apelisser.manager.api.v1.mapper.DepartmentResumeModelAssembler;
 import com.apelisser.manager.api.v1.model.DepartmentModel;
 import com.apelisser.manager.api.v1.model.DepartmentResumeModel;
 import com.apelisser.manager.api.v1.model.input.DepartmentInput;
-import com.apelisser.manager.domain.entity.Department;
+import com.apelisser.manager.domain.model.Department;
 import com.apelisser.manager.domain.service.DepartmentRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

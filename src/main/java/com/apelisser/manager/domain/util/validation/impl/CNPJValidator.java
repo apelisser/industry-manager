@@ -1,6 +1,6 @@
-package com.apelisser.manager.domain.model.validate.impl;
+package com.apelisser.manager.domain.util.validation.impl;
 
-import com.apelisser.manager.domain.model.validate.Validatable;
+import com.apelisser.manager.domain.util.validation.Validatable;
 
 public class CNPJValidator implements Validatable<String> {
 

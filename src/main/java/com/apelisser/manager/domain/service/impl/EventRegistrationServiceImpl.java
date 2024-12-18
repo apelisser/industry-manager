@@ -1,11 +1,11 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.model.enums.RecordStatus;
+import com.apelisser.manager.domain.enums.RecordStatus;
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.exception.OperationNotAllowedException;
-import com.apelisser.manager.domain.entity.Company;
-import com.apelisser.manager.domain.entity.Event;
+import com.apelisser.manager.domain.model.Company;
+import com.apelisser.manager.domain.model.Event;
 import com.apelisser.manager.domain.repository.EventRepository;
 import com.apelisser.manager.domain.service.CompanyRegistrationService;
 import com.apelisser.manager.domain.service.EventRegistrationService;

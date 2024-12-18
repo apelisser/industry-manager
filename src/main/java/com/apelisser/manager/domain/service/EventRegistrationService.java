@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.service;
 
-import com.apelisser.manager.domain.entity.Event;
+import com.apelisser.manager.domain.model.Event;
 
 import java.util.List;
 

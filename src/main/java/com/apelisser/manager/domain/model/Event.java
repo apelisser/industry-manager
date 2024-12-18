@@ -1,6 +1,6 @@
-package com.apelisser.manager.domain.entity;
+package com.apelisser.manager.domain.model;
 
-import com.apelisser.manager.domain.model.enums.RecordStatus;
+import com.apelisser.manager.domain.enums.RecordStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

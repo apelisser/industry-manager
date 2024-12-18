@@ -1,4 +1,4 @@
-package com.apelisser.manager.domain.model.validate;
+package com.apelisser.manager.domain.util.validation;
 
 import java.util.function.Predicate;
 

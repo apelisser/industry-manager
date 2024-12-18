@@ -1,8 +1,8 @@
 package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.input.EventTimeInput;
-import com.apelisser.manager.domain.entity.Event;
-import com.apelisser.manager.domain.entity.EventTime;
+import com.apelisser.manager.domain.model.Event;
+import com.apelisser.manager.domain.model.EventTime;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

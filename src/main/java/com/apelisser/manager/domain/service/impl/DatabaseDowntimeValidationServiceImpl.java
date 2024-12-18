@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.service.impl;
 
-import com.apelisser.manager.domain.entity.EquipmentDowntime;
+import com.apelisser.manager.domain.model.EquipmentDowntime;
 import com.apelisser.manager.domain.exception.OverlapException;
 import com.apelisser.manager.domain.service.DatabaseDowntimeValidationService;
 import com.apelisser.manager.domain.service.EquipmentDowntimeRegistrationService;

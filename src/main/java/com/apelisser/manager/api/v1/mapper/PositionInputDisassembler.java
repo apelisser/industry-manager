@@ -1,8 +1,8 @@
 package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.input.PositionInput;
-import com.apelisser.manager.domain.entity.Company;
-import com.apelisser.manager.domain.entity.Position;
+import com.apelisser.manager.domain.model.Company;
+import com.apelisser.manager.domain.model.Position;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

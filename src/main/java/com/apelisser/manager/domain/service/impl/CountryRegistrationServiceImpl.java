@@ -2,7 +2,7 @@ package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
-import com.apelisser.manager.domain.entity.Country;
+import com.apelisser.manager.domain.model.Country;
 import com.apelisser.manager.domain.repository.CountryRepository;
 import com.apelisser.manager.domain.service.CountryRegistrationService;
 import org.springframework.dao.DataIntegrityViolationException;

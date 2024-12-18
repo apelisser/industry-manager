@@ -6,7 +6,7 @@ import com.apelisser.manager.api.v1.mapper.EmployeeResumeModelAssembler;
 import com.apelisser.manager.api.v1.model.EmployeeModel;
 import com.apelisser.manager.api.v1.model.EmployeeResumeModel;
 import com.apelisser.manager.api.v1.model.input.EmployeeInput;
-import com.apelisser.manager.domain.entity.Employee;
+import com.apelisser.manager.domain.model.Employee;
 import com.apelisser.manager.domain.service.EmployeeRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

@@ -4,7 +4,7 @@ import com.apelisser.manager.api.v1.mapper.CompanyInputDisassembler;
 import com.apelisser.manager.api.v1.mapper.CompanyModelAssembler;
 import com.apelisser.manager.api.v1.model.CompanyModel;
 import com.apelisser.manager.api.v1.model.input.CompanyInput;
-import com.apelisser.manager.domain.entity.Company;
+import com.apelisser.manager.domain.model.Company;
 import com.apelisser.manager.domain.service.CompanyRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

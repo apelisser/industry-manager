@@ -8,7 +8,7 @@ import com.apelisser.manager.api.v1.model.EventResumeModel;
 import com.apelisser.manager.api.v1.model.input.EventChildrenInput;
 import com.apelisser.manager.api.v1.model.input.EventRootInput;
 import com.apelisser.manager.api.v1.model.input.EventUpdateInput;
-import com.apelisser.manager.domain.entity.Event;
+import com.apelisser.manager.domain.model.Event;
 import com.apelisser.manager.domain.service.EventRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

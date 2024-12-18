@@ -1,4 +1,4 @@
-package com.apelisser.manager.domain.model.enums;
+package com.apelisser.manager.domain.enums;
 
 public enum RecordStatus {
 

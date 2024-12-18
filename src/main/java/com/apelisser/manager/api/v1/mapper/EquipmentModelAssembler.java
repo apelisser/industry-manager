@@ -1,7 +1,7 @@
 package com.apelisser.manager.api.v1.mapper;
 
 import com.apelisser.manager.api.v1.model.EquipmentModel;
-import com.apelisser.manager.domain.entity.Equipment;
+import com.apelisser.manager.domain.model.Equipment;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

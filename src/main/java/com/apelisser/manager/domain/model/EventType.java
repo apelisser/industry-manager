@@ -1,9 +1,7 @@
-package com.apelisser.manager.domain.entity;
+package com.apelisser.manager.domain.model;
 
-import com.apelisser.manager.domain.model.enums.RecordStatus;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,24 +14,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "company")
-public class Company {
+@Table(name = "event_type")
+public class EventType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
-    private String alias;
+    @Column(nullable = false)
+    private String abbreviation;
+    private String observation;
 
     @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false)
-    private Person person;
-
-    @Enumerated(EnumType.STRING)
-    private RecordStatus status = RecordStatus.ACTIVE;
-
-    private String observation;
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
 
 }

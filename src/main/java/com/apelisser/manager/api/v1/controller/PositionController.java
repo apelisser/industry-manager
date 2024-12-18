@@ -6,7 +6,7 @@ import com.apelisser.manager.api.v1.mapper.PositionResumeModelAssembler;
 import com.apelisser.manager.api.v1.model.PositionModel;
 import com.apelisser.manager.api.v1.model.PositionResumeModel;
 import com.apelisser.manager.api.v1.model.input.PositionInput;
-import com.apelisser.manager.domain.entity.Position;
+import com.apelisser.manager.domain.model.Position;
 import com.apelisser.manager.domain.service.PositionRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

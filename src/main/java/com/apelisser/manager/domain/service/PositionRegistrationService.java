@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.service;
 
-import com.apelisser.manager.domain.entity.Position;
+import com.apelisser.manager.domain.model.Position;
 
 import java.util.List;
 

@@ -2,8 +2,8 @@ package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
-import com.apelisser.manager.domain.entity.Employee;
-import com.apelisser.manager.domain.entity.Position;
+import com.apelisser.manager.domain.model.Employee;
+import com.apelisser.manager.domain.model.Position;
 import com.apelisser.manager.domain.repository.EmployeeRepository;
 import com.apelisser.manager.domain.service.EmployeeRegistrationService;
 import com.apelisser.manager.domain.service.PositionRegistrationService;

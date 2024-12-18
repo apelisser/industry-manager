@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.repository;
 
-import com.apelisser.manager.domain.entity.Company;
+import com.apelisser.manager.domain.model.Company;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;

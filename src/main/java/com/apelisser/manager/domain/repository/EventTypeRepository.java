@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.repository;
 
-import com.apelisser.manager.domain.entity.EventType;
+import com.apelisser.manager.domain.model.EventType;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;

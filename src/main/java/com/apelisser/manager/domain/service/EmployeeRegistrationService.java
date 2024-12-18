@@ -1,6 +1,6 @@
 package com.apelisser.manager.domain.service;
 
-import com.apelisser.manager.domain.entity.Employee;
+import com.apelisser.manager.domain.model.Employee;
 
 import java.util.List;
 

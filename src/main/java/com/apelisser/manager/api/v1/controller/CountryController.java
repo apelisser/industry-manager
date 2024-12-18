@@ -4,7 +4,7 @@ import com.apelisser.manager.api.v1.mapper.CountryInputDisassembler;
 import com.apelisser.manager.api.v1.mapper.CountryModelAssembler;
 import com.apelisser.manager.api.v1.model.CountryModel;
 import com.apelisser.manager.api.v1.model.input.CountryInput;
-import com.apelisser.manager.domain.entity.Country;
+import com.apelisser.manager.domain.model.Country;
 import com.apelisser.manager.domain.service.CountryRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
