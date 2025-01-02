@@ -4,6 +4,7 @@ import com.apelisser.manager.application.api.exceptionhandler.model.Problem;
 import com.apelisser.manager.application.api.exceptionhandler.model.ProblemType;
 import com.apelisser.manager.core.context.Context;
 import com.apelisser.manager.core.i18n.MessageManager;
+import com.apelisser.manager.domain.exception.PersonInvalidException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,7 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static com.apelisser.manager.core.i18n.MessageConstants.GENERIC_USER_MESSAGE;
+import static com.apelisser.manager.core.i18n.MessageConstants.*;
 
 @RestControllerAdvice
 public class ApiExceptionHandler extends ExceptionHandlingHelper {
@@ -21,6 +22,20 @@ public class ApiExceptionHandler extends ExceptionHandlingHelper {
 
     public ApiExceptionHandler(MessageManager messageManager, Context context) {
         super(log, context, messageManager);
+    }
+
+    @ExceptionHandler(PersonInvalidException.class)
+    private ProblemDetail handlePersonInvalidException(PersonInvalidException e) {
+        HttpStatusCode status = HttpStatus.BAD_REQUEST;
+        ProblemType problemType = ProblemType.INVALID_DATA;
+        String userMessage = getMessage(EX_PERSON_INVALID_MESSAGE, e.getType());
+        String detailMessage = getMessage(EX_PERSON_INVALID_DETAIL, e.getValue(), e.getType());
+
+        Problem problem = createProblemBuilder(status, problemType, detailMessage)
+            .userMessage(userMessage)
+            .build();
+
+        return problem.toProblemDetail();
     }
 
     /**

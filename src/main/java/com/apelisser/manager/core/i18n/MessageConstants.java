@@ -46,6 +46,9 @@ public final class MessageConstants {
     public static final String EX_MISSING_REQUEST_HEADER_MESSAGE = "exception.missing-servlet-request-header.message";
     public static final String EX_MISSING_REQUEST_HEADER_DETAIL = "exception.missing-servlet-request-header.detail";
 
+    public static final String EX_PERSON_INVALID_MESSAGE = "exception.person-invalid.message";
+    public static final String EX_PERSON_INVALID_DETAIL = "exception.person-invalid.detail";
+
     private MessageConstants() {
         throw new IllegalStateException("Utility class");
     }
