@@ -1,7 +1,7 @@
 package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.model.EquipmentDowntime;
-import com.apelisser.manager.domain.exception.OverlapException;
+import com.apelisser.manager.domain.exception.EventOverlapException;
 import com.apelisser.manager.domain.service.DatabaseDowntimeValidationService;
 import com.apelisser.manager.domain.service.EquipmentDowntimeRegistrationService;
 import org.springframework.context.annotation.Lazy;
@@ -39,7 +39,7 @@ public class DatabaseDowntimeValidationServiceImpl implements DatabaseDowntimeVa
             downtime.getEvent().getId(),
             downtime.getStartTime(),
             downtime.getEndTime());
-        throw new OverlapException(message);
+        throw new EventOverlapException(message);
     }
 
 }
