@@ -4,6 +4,7 @@ import com.apelisser.manager.application.api.exceptionhandler.model.Problem;
 import com.apelisser.manager.application.api.exceptionhandler.model.ProblemType;
 import com.apelisser.manager.core.context.Context;
 import com.apelisser.manager.core.i18n.MessageManager;
+import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.PersonInvalidException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,20 @@ public class ApiExceptionHandler extends ExceptionHandlingHelper {
 
     public ApiExceptionHandler(MessageManager messageManager, Context context) {
         super(log, context, messageManager);
+    }
+
+    @ExceptionHandler(EntityInUseException.class)
+    private ProblemDetail handleEntityInUseException(EntityInUseException e) {
+        HttpStatusCode status = HttpStatus.CONFLICT;
+        ProblemType problemType = ProblemType.POLICY_VIOLATION;
+        String userMessage = getMessage(EX_ENTITY_IN_USE_MESSAGE, e.getEntityClassName());
+        String detailMessage = getMessage(EX_ENTITY_IN_USE_DETAIL, e.getEntityClassName(), e.getIdValue());
+
+        Problem problem = createProblemBuilder(status, problemType, detailMessage)
+            .userMessage(userMessage)
+            .build();
+
+        return problem.toProblemDetail();
     }
 
     @ExceptionHandler(PersonInvalidException.class)

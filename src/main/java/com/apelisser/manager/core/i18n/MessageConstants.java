@@ -48,6 +48,8 @@ public final class MessageConstants {
 
     public static final String EX_PERSON_INVALID_MESSAGE = "exception.person-invalid.message";
     public static final String EX_PERSON_INVALID_DETAIL = "exception.person-invalid.detail";
+    public static final String EX_ENTITY_IN_USE_MESSAGE = "exception.entity-in-use.message";
+    public static final String EX_ENTITY_IN_USE_DETAIL = "exception.entity-in-use.detail";
 
     private MessageConstants() {
         throw new IllegalStateException("Utility class");
