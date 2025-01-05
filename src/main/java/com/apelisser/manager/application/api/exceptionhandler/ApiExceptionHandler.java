@@ -5,6 +5,7 @@ import com.apelisser.manager.application.api.exceptionhandler.model.ProblemType;
 import com.apelisser.manager.core.context.Context;
 import com.apelisser.manager.core.i18n.MessageManager;
 import com.apelisser.manager.domain.exception.EntityInUseException;
+import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.exception.PersonInvalidException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,20 @@ public class ApiExceptionHandler extends ExceptionHandlingHelper {
         ProblemType problemType = ProblemType.POLICY_VIOLATION;
         String userMessage = getMessage(EX_ENTITY_IN_USE_MESSAGE, e.getEntityClassName());
         String detailMessage = getMessage(EX_ENTITY_IN_USE_DETAIL, e.getEntityClassName(), e.getIdValue());
+
+        Problem problem = createProblemBuilder(status, problemType, detailMessage)
+            .userMessage(userMessage)
+            .build();
+
+        return problem.toProblemDetail();
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    private ProblemDetail handleEntityNotFoundException(EntityNotFoundException e) {
+        HttpStatusCode status = HttpStatus.BAD_REQUEST;
+        ProblemType problemType = ProblemType.INVALID_DATA;
+        String userMessage = getMessage(EX_ENTITY_NOT_FOUND_MESSAGE, e.getEntityClassName());
+        String detailMessage = getMessage(EX_ENTITY_NOT_FOUND_DETAIL, e.getEntityClassName(), e.getIdentifier());
 
         Problem problem = createProblemBuilder(status, problemType, detailMessage)
             .userMessage(userMessage)

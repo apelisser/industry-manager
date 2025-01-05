@@ -41,4 +41,8 @@ public class EntityNotFoundException extends IndustryManagerException {
         return identifier;
     }
 
+    public String getEntityClassName() {
+        return entity.getSimpleName();
+    }
+
 }
