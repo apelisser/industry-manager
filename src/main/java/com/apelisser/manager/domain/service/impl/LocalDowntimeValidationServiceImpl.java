@@ -1,9 +1,9 @@
 package com.apelisser.manager.domain.service.impl;
 
+import com.apelisser.manager.domain.exception.EventOutOfRangeException;
+import com.apelisser.manager.domain.exception.EventTimeOverlapException;
 import com.apelisser.manager.domain.model.EquipmentDowntime;
 import com.apelisser.manager.domain.model.EventTime;
-import com.apelisser.manager.domain.exception.EventOutOfRangeException;
-import com.apelisser.manager.domain.exception.EventOverlapException;
 import com.apelisser.manager.domain.service.LocalDowntimeValidationService;
 import com.apelisser.manager.domain.util.Assert;
 import org.springframework.stereotype.Service;
@@ -99,7 +99,7 @@ public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidati
      *
      * @param eventsTime the list of EventTime objects to be validated.
      * @throws IllegalArgumentException if the list of events is empty or any event has null properties.
-     * @throws EventOverlapException if any of the events overlap with each other.
+     * @throws EventTimeOverlapException if any of the events overlap with each other.
      */
     @Override
     public void validateEventsTime(List<EventTime> eventsTime) {
@@ -274,15 +274,16 @@ public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidati
 
     private void throwOverlapException(EventTime eventTime, EventTime conflictingEventTime) {
         String message = String.format(OVERLAP_EVENT_MESSAGE_TEMPLATE,
-            conflictingEventTime.getEvent().getId(),
-            conflictingEventTime.getType(),
-            conflictingEventTime.getStartTime(),
-            conflictingEventTime.getEndTime(),
             eventTime.getEvent().getId(),
             eventTime.getType(),
             eventTime.getStartTime(),
-            eventTime.getEndTime());
-        throw new EventOverlapException(message);
+            eventTime.getEndTime(),
+            conflictingEventTime.getEvent().getId(),
+            conflictingEventTime.getType(),
+            conflictingEventTime.getStartTime(),
+            conflictingEventTime.getEndTime());
+
+        throw new EventTimeOverlapException(eventTime, conflictingEventTime, message);
     }
 
 }
