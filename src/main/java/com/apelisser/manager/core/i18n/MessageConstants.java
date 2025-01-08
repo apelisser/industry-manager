@@ -54,6 +54,8 @@ public final class MessageConstants {
     public static final String EX_ENTITY_NOT_FOUND_DETAIL = "exception.entity-not-found.detail";
     public static final String EX_EVENT_TIME_OVERLAP_MESSAGE = "exception.event-time-overlap.message";
     public static final String EX_EVENT_TIME_OVERLAP_DETAIL = "exception.event-time-overlap.detail";
+    public static final String EX_EQUIPMENT_DOWNTIME_OVERLAP_MESSAGE = "exception.equipment-downtime-overlap.message";
+    public static final String EX_EQUIPMENT_DOWNTIME_OVERLAP_DETAIL = "exception.equipment-downtime-overlap.detail";
 
     private MessageConstants() {
         throw new IllegalStateException("Utility class");

@@ -6,8 +6,10 @@ import com.apelisser.manager.core.context.Context;
 import com.apelisser.manager.core.i18n.MessageManager;
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
+import com.apelisser.manager.domain.exception.EquipmentDowntimeOverlapException;
 import com.apelisser.manager.domain.exception.EventTimeOverlapException;
 import com.apelisser.manager.domain.exception.PersonInvalidException;
+import com.apelisser.manager.domain.model.EquipmentDowntime;
 import com.apelisser.manager.domain.model.EventTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,32 +28,6 @@ public class ApiExceptionHandler extends ExceptionHandlingHelper {
 
     public ApiExceptionHandler(MessageManager messageManager, Context context) {
         super(log, context, messageManager);
-    }
-
-    @ExceptionHandler(EventTimeOverlapException.class)
-    private ProblemDetail handleEventTimeOverlapException(EventTimeOverlapException e) {
-        HttpStatusCode status = HttpStatus.CONFLICT;
-        ProblemType problemType = ProblemType.POLICY_VIOLATION;
-
-        EventTime eventTime = e.getEventTime();
-        EventTime overlappingEventTime = e.getOverlappingEventTime();
-
-        String userMessage = getMessage(EX_EVENT_TIME_OVERLAP_MESSAGE);
-        String detailMessage = getMessage(EX_EVENT_TIME_OVERLAP_DETAIL,
-            eventTime.getEvent().getId(),
-            eventTime.getType(),
-            eventTime.getStartTime(),
-            eventTime.getEndTime(),
-            overlappingEventTime.getEvent().getId(),
-            overlappingEventTime.getType(),
-            overlappingEventTime.getStartTime(),
-            overlappingEventTime.getEndTime());
-
-        Problem problem = createProblemBuilder(status, problemType, detailMessage)
-            .userMessage(userMessage)
-            .build();
-
-        return problem.toProblemDetail();
     }
 
     @ExceptionHandler(EntityInUseException.class)
@@ -74,6 +50,56 @@ public class ApiExceptionHandler extends ExceptionHandlingHelper {
         ProblemType problemType = ProblemType.INVALID_DATA;
         String userMessage = getMessage(EX_ENTITY_NOT_FOUND_MESSAGE, e.getEntityClassName());
         String detailMessage = getMessage(EX_ENTITY_NOT_FOUND_DETAIL, e.getEntityClassName(), e.getIdentifier());
+
+        Problem problem = createProblemBuilder(status, problemType, detailMessage)
+            .userMessage(userMessage)
+            .build();
+
+        return problem.toProblemDetail();
+    }
+
+    @ExceptionHandler(EquipmentDowntimeOverlapException.class)
+    private ProblemDetail handleEquipmentDowntimeOverlapException(EquipmentDowntimeOverlapException e) {
+        HttpStatusCode status = HttpStatus.CONFLICT;
+        ProblemType problemType = ProblemType.POLICY_VIOLATION;
+
+        EquipmentDowntime equipmentDowntime = e.getEquipmentDowntime();
+        EquipmentDowntime overlappingEquipmentDowntime = e.getOverlappingEquipmentDowntime();
+
+        String userMessage = getMessage(EX_EQUIPMENT_DOWNTIME_OVERLAP_MESSAGE);
+        String detailMessage = getMessage(EX_EQUIPMENT_DOWNTIME_OVERLAP_DETAIL,
+            equipmentDowntime.getEvent().getId(),
+            equipmentDowntime.getStartTime(),
+            equipmentDowntime.getEndTime(),
+            overlappingEquipmentDowntime.getEvent().getId(),
+            overlappingEquipmentDowntime.getStartTime(),
+            overlappingEquipmentDowntime.getEndTime());
+
+        Problem problem = createProblemBuilder(status, problemType, detailMessage)
+            .userMessage(userMessage)
+            .build();
+
+        return problem.toProblemDetail();
+    }
+
+    @ExceptionHandler(EventTimeOverlapException.class)
+    private ProblemDetail handleEventTimeOverlapException(EventTimeOverlapException e) {
+        HttpStatusCode status = HttpStatus.CONFLICT;
+        ProblemType problemType = ProblemType.POLICY_VIOLATION;
+
+        EventTime eventTime = e.getEventTime();
+        EventTime overlappingEventTime = e.getOverlappingEventTime();
+
+        String userMessage = getMessage(EX_EVENT_TIME_OVERLAP_MESSAGE);
+        String detailMessage = getMessage(EX_EVENT_TIME_OVERLAP_DETAIL,
+            eventTime.getEvent().getId(),
+            eventTime.getType(),
+            eventTime.getStartTime(),
+            eventTime.getEndTime(),
+            overlappingEventTime.getEvent().getId(),
+            overlappingEventTime.getType(),
+            overlappingEventTime.getStartTime(),
+            overlappingEventTime.getEndTime());
 
         Problem problem = createProblemBuilder(status, problemType, detailMessage)
             .userMessage(userMessage)
