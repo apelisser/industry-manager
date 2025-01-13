@@ -7,6 +7,7 @@ import com.apelisser.manager.core.i18n.MessageManager;
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.exception.EquipmentDowntimeOverlapException;
+import com.apelisser.manager.domain.exception.EventOutOfRangeException;
 import com.apelisser.manager.domain.exception.EventTimeOverlapException;
 import com.apelisser.manager.domain.exception.PersonInvalidException;
 import com.apelisser.manager.domain.model.EquipmentDowntime;
@@ -74,6 +75,30 @@ public class ApiExceptionHandler extends ExceptionHandlingHelper {
             overlappingEquipmentDowntime.getEvent().getId(),
             overlappingEquipmentDowntime.getStartTime(),
             overlappingEquipmentDowntime.getEndTime());
+
+        Problem problem = createProblemBuilder(status, problemType, detailMessage)
+            .userMessage(userMessage)
+            .build();
+
+        return problem.toProblemDetail();
+    }
+
+    @ExceptionHandler(EventOutOfRangeException.class)
+    private ProblemDetail handleEventOutOfRangeException(EventOutOfRangeException e) {
+        HttpStatusCode status = HttpStatus.CONFLICT;
+        ProblemType problemType = ProblemType.POLICY_VIOLATION;
+
+        EquipmentDowntime parentEvent = e.getParentEvent();
+        EventTime eventExceeding = e.getEventExceeding();
+
+        String userMessage = getMessage(EX_EVENT_OUT_OF_RANGE_MESSAGE);
+        String detailMessage = getMessage(EX_EVENT_OUT_OF_RANGE_DETAIL,
+            eventExceeding.getEvent().getId(),
+            eventExceeding.getType(),
+            eventExceeding.getStartTime(),
+            eventExceeding.getEndTime(),
+            parentEvent.getStartTime(),
+            parentEvent.getEndTime());
 
         Problem problem = createProblemBuilder(status, problemType, detailMessage)
             .userMessage(userMessage)
