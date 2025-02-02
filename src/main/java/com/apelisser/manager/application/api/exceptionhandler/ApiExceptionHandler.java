@@ -9,6 +9,7 @@ import com.apelisser.manager.domain.exception.EntityNotFoundException;
 import com.apelisser.manager.domain.exception.EquipmentDowntimeOverlapException;
 import com.apelisser.manager.domain.exception.EventOutOfRangeException;
 import com.apelisser.manager.domain.exception.EventTimeOverlapException;
+import com.apelisser.manager.domain.exception.ParentEventUpdateNotAllowedException;
 import com.apelisser.manager.domain.exception.PersonInvalidException;
 import com.apelisser.manager.domain.model.EquipmentDowntime;
 import com.apelisser.manager.domain.model.EventTime;
@@ -125,6 +126,20 @@ public class ApiExceptionHandler extends ExceptionHandlingHelper {
             overlappingEventTime.getType(),
             overlappingEventTime.getStartTime(),
             overlappingEventTime.getEndTime());
+
+        Problem problem = createProblemBuilder(status, problemType, detailMessage)
+            .userMessage(userMessage)
+            .build();
+
+        return problem.toProblemDetail();
+    }
+
+    @ExceptionHandler(ParentEventUpdateNotAllowedException.class)
+    private ProblemDetail handleParentEventUpdateException(ParentEventUpdateNotAllowedException e) {
+        HttpStatusCode status = HttpStatus.CONFLICT;
+        ProblemType problemType = ProblemType.POLICY_VIOLATION;
+        String userMessage = getMessage(EX_PARENT_EVENT_UPDATE_NOT_ALLOWED_MESSAGE);
+        String detailMessage = getMessage(EX_PARENT_EVENT_UPDATE_NOT_ALLOWED_DETAIL, e.getEventName());
 
         Problem problem = createProblemBuilder(status, problemType, detailMessage)
             .userMessage(userMessage)

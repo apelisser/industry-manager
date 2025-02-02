@@ -58,6 +58,8 @@ public final class MessageConstants {
     public static final String EX_EQUIPMENT_DOWNTIME_OVERLAP_DETAIL = "exception.equipment-downtime-overlap.detail";
     public static final String EX_EVENT_OUT_OF_RANGE_MESSAGE = "exception.event-out-of-range.message";
     public static final String EX_EVENT_OUT_OF_RANGE_DETAIL = "exception.event-out-of-range.detail";
+    public static final String EX_PARENT_EVENT_UPDATE_NOT_ALLOWED_MESSAGE = "exception.parent-event-update-not-allowed.message";
+    public static final String EX_PARENT_EVENT_UPDATE_NOT_ALLOWED_DETAIL = "exception.parent-event-update-not-allowed.detail";
 
     private MessageConstants() {
         throw new IllegalStateException("Utility class");
