@@ -5,7 +5,7 @@ import com.apelisser.manager.domain.model.EventTime;
 
 import java.io.Serial;
 
-public class EventOutOfRangeException extends IndustryManagerException {
+public class EventOutOfRangeException extends RuntimeException {
 
     @Serial
     private static final long serialVersionUID = 1996060315947211739L;

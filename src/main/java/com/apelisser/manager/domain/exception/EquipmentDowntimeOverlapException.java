@@ -4,7 +4,7 @@ import com.apelisser.manager.domain.model.EquipmentDowntime;
 
 import java.io.Serial;
 
-public class EquipmentDowntimeOverlapException extends IndustryManagerException {
+public class EquipmentDowntimeOverlapException extends RuntimeException {
 
     @Serial
     private static final long serialVersionUID = 4328235942302990766L;

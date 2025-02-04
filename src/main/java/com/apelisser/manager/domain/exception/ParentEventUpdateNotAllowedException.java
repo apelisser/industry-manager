@@ -2,7 +2,7 @@ package com.apelisser.manager.domain.exception;
 
 import java.io.Serial;
 
-public class ParentEventUpdateNotAllowedException extends IndustryManagerException {
+public class ParentEventUpdateNotAllowedException extends RuntimeException {
 
     @Serial
     private static final long serialVersionUID = 371220506777063915L;

@@ -4,7 +4,7 @@ import com.apelisser.manager.domain.enums.PersonType;
 
 import java.io.Serial;
 
-public class PersonInvalidException extends IndustryManagerException {
+public class PersonInvalidException extends RuntimeException {
 
     @Serial
     private static final long serialVersionUID = 3995201305866419805L;
