@@ -2,7 +2,7 @@ package com.apelisser.manager.domain.exception;
 
 import java.io.Serial;
 
-public class EntityInUseException extends IndustryManagerException {
+public class EntityInUseException extends RuntimeException {
 
     private final Class<?> entity;
     private final Object resourceId;

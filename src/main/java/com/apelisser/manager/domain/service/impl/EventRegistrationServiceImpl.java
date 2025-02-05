@@ -3,7 +3,7 @@ package com.apelisser.manager.domain.service.impl;
 import com.apelisser.manager.domain.enums.RecordStatus;
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
-import com.apelisser.manager.domain.exception.OperationNotAllowedException;
+import com.apelisser.manager.domain.exception.ParentEventUpdateNotAllowedException;
 import com.apelisser.manager.domain.model.Company;
 import com.apelisser.manager.domain.model.Event;
 import com.apelisser.manager.domain.repository.EventRepository;
@@ -30,7 +30,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
     @Override
     public Event save(Event event) {
         if (isUpdatingParent(event)) {
-            throw new OperationNotAllowedException("It is not allowed to make changes to the parent event.");
+            throw new ParentEventUpdateNotAllowedException(event.getName());
         }
 
         Long companyId = event.getCompany().getId();
@@ -98,11 +98,13 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
             return false;
         }
 
+        eventRepository.detach(event);
+
         /*
         1: original.parent == null && event.parent == null -> return false
         2: original.parent == null && event.parent != null -> return true
         3: original.parent != null && event.parent == null -> return true
-        4: original.parent == 1 && event.parent == 2       -> return true
+        4: original.parentId != event.parentId             -> return true, otherwise return false
          */
 
         Event original = findById(event.getId());

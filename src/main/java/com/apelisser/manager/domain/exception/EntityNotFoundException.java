@@ -2,7 +2,7 @@ package com.apelisser.manager.domain.exception;
 
 import java.io.Serial;
 
-public class EntityNotFoundException extends IndustryManagerException {
+public class EntityNotFoundException extends RuntimeException {
 
     @Serial
     private static final long serialVersionUID = -7799526871134608256L;
@@ -39,6 +39,10 @@ public class EntityNotFoundException extends IndustryManagerException {
 
     public Object getIdentifier() {
         return identifier;
+    }
+
+    public String getEntityClassName() {
+        return entity.getSimpleName();
     }
 
 }

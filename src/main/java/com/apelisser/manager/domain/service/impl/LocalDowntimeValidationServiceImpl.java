@@ -1,9 +1,9 @@
 package com.apelisser.manager.domain.service.impl;
 
+import com.apelisser.manager.domain.exception.EventOutOfRangeException;
+import com.apelisser.manager.domain.exception.EventTimeOverlapException;
 import com.apelisser.manager.domain.model.EquipmentDowntime;
 import com.apelisser.manager.domain.model.EventTime;
-import com.apelisser.manager.domain.exception.OutOfRangeException;
-import com.apelisser.manager.domain.exception.OverlapException;
 import com.apelisser.manager.domain.service.LocalDowntimeValidationService;
 import com.apelisser.manager.domain.util.Assert;
 import org.springframework.stereotype.Service;
@@ -99,7 +99,7 @@ public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidati
      *
      * @param eventsTime the list of EventTime objects to be validated.
      * @throws IllegalArgumentException if the list of events is empty or any event has null properties.
-     * @throws OverlapException if any of the events overlap with each other.
+     * @throws EventTimeOverlapException if any of the events overlap with each other.
      */
     @Override
     public void validateEventsTime(List<EventTime> eventsTime) {
@@ -186,18 +186,17 @@ public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidati
         Assert.notNull(eventTime.getEvent().getId(), "The event id of related events must not be null.");
     }
 
-
-/**
- * Validates the main range of the equipment downtime.
- *
- * <p>
- * This method checks if the end time of the equipment downtime is after the start time.
- * If the end time is null, the method returns without any validation.
- * If the end time is not after the start time, an {@link IllegalArgumentException} is thrown.
- * </p>
- *
- * @param equipmentDowntime the equipment downtime to validate.
- */
+    /**
+     * Validates the main range of the equipment downtime.
+     *
+     * <p>
+     * This method checks if the end time of the equipment downtime is after the start time.
+     * If the end time is null, the method returns without any validation.
+     * If the end time is not after the start time, an {@link IllegalArgumentException} is thrown.
+     * </p>
+     *
+     * @param equipmentDowntime the equipment downtime to validate.
+     */
     private void validateMainRange(EquipmentDowntime equipmentDowntime) {
         this.validateDateTimeRange(equipmentDowntime.getStartTime(), equipmentDowntime.getEndTime());
     }
@@ -259,8 +258,6 @@ public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidati
             .ifPresent(event -> throwOutOfRangeException(equipmentDowntime, event));
     }
 
-
-
     private void throwOutOfRangeException(EquipmentDowntime equipmentDowntime, EventTime event) {
         String message = String.format(OUT_OF_RANGE_EVENT_MESSAGE_TEMPLATE,
             event.getEvent().getId(),
@@ -269,20 +266,21 @@ public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidati
             event.getEndTime(),
             equipmentDowntime.getStartTime(),
             equipmentDowntime.getEndTime());
-        throw new OutOfRangeException(message);
+        throw new EventOutOfRangeException(equipmentDowntime, event, message);
     }
 
     private void throwOverlapException(EventTime eventTime, EventTime conflictingEventTime) {
         String message = String.format(OVERLAP_EVENT_MESSAGE_TEMPLATE,
-            conflictingEventTime.getEvent().getId(),
-            conflictingEventTime.getType(),
-            conflictingEventTime.getStartTime(),
-            conflictingEventTime.getEndTime(),
             eventTime.getEvent().getId(),
             eventTime.getType(),
             eventTime.getStartTime(),
-            eventTime.getEndTime());
-        throw new OverlapException(message);
+            eventTime.getEndTime(),
+            conflictingEventTime.getEvent().getId(),
+            conflictingEventTime.getType(),
+            conflictingEventTime.getStartTime(),
+            conflictingEventTime.getEndTime());
+
+        throw new EventTimeOverlapException(eventTime, conflictingEventTime, message);
     }
 
 }
