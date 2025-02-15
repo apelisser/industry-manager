@@ -8,17 +8,17 @@ public interface EventRegistrationService {
 
     Event save(Event event);
 
-    void delete(Long eventId);
+    void delete(String eventId);
 
-    Event findById(Long eventId);
+    Event findById(String eventId);
 
     List<Event> findAllRoots();
 
-    List<Event> findAllChildren(Long parentEventId);
+    List<Event> findAllChildren(String parentEventId);
 
     List<Event> findAll();
 
-    void inactivate(Long eventId);
+    void inactivate(String eventId);
 
-    void activate(Long eventId);
+    void activate(String eventId);
 }

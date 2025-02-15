@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class DepartmentModel {
 
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private CompanyResumeModel company;

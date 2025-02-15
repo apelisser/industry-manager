@@ -48,7 +48,7 @@ public class PositionController {
     }
 
     @GetMapping("/{positionId}")
-    public PositionModel findById(@PathVariable Long positionId) {
+    public PositionModel findById(@PathVariable String positionId) {
         Position position = positionService.findById(positionId);
         return positionAssembler.toModel(position);
     }
@@ -62,7 +62,7 @@ public class PositionController {
     }
 
     @PutMapping("/{positionId}")
-    public PositionModel update(@PathVariable Long positionId, @RequestBody PositionInput positionInput) {
+    public PositionModel update(@PathVariable String positionId, @RequestBody PositionInput positionInput) {
         Position position = positionService.findById(positionId);
         positionDisassembler.copyToDomainObject(positionInput, position);
         Position updatedPosition = positionService.save(position);
@@ -71,7 +71,7 @@ public class PositionController {
 
     @DeleteMapping("/{positionId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long positionId) {
+    public void delete(@PathVariable String positionId) {
         positionService.delete(positionId);
     }
 

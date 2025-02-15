@@ -33,14 +33,14 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
             throw new ParentEventUpdateNotAllowedException(event.getName());
         }
 
-        Long companyId = event.getCompany().getId();
+        String companyId = event.getCompany().getId();
         Company company = companyService.findById(companyId);
         event.setCompany(company);
         return eventRepository.save(event);
     }
 
     @Override
-    public void delete(Long eventId) {
+    public void delete(String eventId) {
         try {
             eventRepository.deleteById(eventId);
             eventRepository.flush();
@@ -52,7 +52,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
     }
 
     @Override
-    public Event findById(Long eventId) {
+    public Event findById(String eventId) {
         return eventRepository.findById(eventId)
             .orElseThrow(() -> new EntityNotFoundException(Event.class, eventId));
     }
@@ -63,7 +63,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
     }
 
     @Override
-    public List<Event> findAllChildren(Long parentEventId) {
+    public List<Event> findAllChildren(String parentEventId) {
         Event parent = findById(parentEventId);
         return eventRepository.findAllChildren(parent.getId());
     }
@@ -74,7 +74,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
     }
 
     @Override
-    public void inactivate(Long eventId) {
+    public void inactivate(String eventId) {
         Event event = findById(eventId);
         if (!event.isInactive()) {
             event.setStatus(RecordStatus.INACTIVE);
@@ -83,7 +83,7 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
     }
 
     @Override
-    public void activate(Long eventId) {
+    public void activate(String eventId) {
         Event event = findById(eventId);
         if (!event.isActive()) {
             event.setStatus(RecordStatus.ACTIVE);
@@ -120,8 +120,8 @@ public class EventRegistrationServiceImpl implements EventRegistrationService {
         }
 
         // 4
-        Long originalParentId = original.getParent().getId();
-        Long eventParentId = event.getParent().getId();
+        String originalParentId = original.getParent().getId();
+        String eventParentId = event.getParent().getId();
         return !Objects.equals(originalParentId, eventParentId);
     }
 

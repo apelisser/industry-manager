@@ -27,14 +27,14 @@ public class EmployeeRegistrationServiceImpl implements EmployeeRegistrationServ
 
     @Override
     public Employee save(Employee employee) {
-        Long positionId = employee.getPosition().getId();
+        String positionId = employee.getPosition().getId();
         Position position = positionService.findById(positionId);
         employee.setPosition(position);
         return employeeRepository.save(employee);
     }
 
     @Override
-    public void delete(Long employeeId) {
+    public void delete(String employeeId) {
         try {
             employeeRepository.deleteById(employeeId);
             employeeRepository.flush();
@@ -46,7 +46,7 @@ public class EmployeeRegistrationServiceImpl implements EmployeeRegistrationServ
     }
 
     @Override
-    public Employee findById(Long employeeId) {
+    public Employee findById(String employeeId) {
         return employeeRepository.findById(employeeId)
             .orElseThrow(() -> new EntityNotFoundException(Employee.class, employeeId));
     }

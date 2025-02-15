@@ -1,7 +1,14 @@
 package com.apelisser.manager.domain.model;
 
 import com.apelisser.manager.domain.enums.EventType;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,11 +23,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "equipment_downtime")
-public class EquipmentDowntime {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class EquipmentDowntime extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "equipment_id", nullable = false, updatable = false)
@@ -55,8 +58,9 @@ public class EquipmentDowntime {
 
     private String observation;
 
-    @PrePersist
+    @Override
     protected void prePersist() {
+        super.prePersist();
         this.createdAt = OffsetDateTime.now();
     }
 

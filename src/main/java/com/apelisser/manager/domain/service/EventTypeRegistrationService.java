@@ -8,9 +8,9 @@ public interface EventTypeRegistrationService {
 
     EventType save(EventType eventType);
 
-    void delete(Long eventTypeId);
+    void delete(String eventTypeId);
 
-    EventType findById(Long eventTypeId);
+    EventType findById(String eventTypeId);
 
     List<EventType> findAll();
 

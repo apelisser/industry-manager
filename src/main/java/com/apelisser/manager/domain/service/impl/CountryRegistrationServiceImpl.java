@@ -26,7 +26,7 @@ public class CountryRegistrationServiceImpl implements CountryRegistrationServic
     }
 
     @Override
-    public void delete(Long countryId) {
+    public void delete(String countryId) {
         try {
             countryRepository.deleteById(countryId);
             countryRepository.flush();
@@ -38,7 +38,7 @@ public class CountryRegistrationServiceImpl implements CountryRegistrationServic
     }
 
     @Override
-    public Country findById(Long countryId) {
+    public Country findById(String countryId) {
         return countryRepository.findById(countryId)
             .orElseThrow(() -> new EntityNotFoundException(Country.class, countryId));
     }

@@ -26,7 +26,7 @@ public class EquipmentInput {
     @ToString
     @EqualsAndHashCode
     public static class Piece {
-        private Long id;
+        private String id;
         private String name;
         private double capacity;
         private String description;

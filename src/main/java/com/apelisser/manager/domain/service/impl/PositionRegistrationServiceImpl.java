@@ -27,12 +27,12 @@ public class PositionRegistrationServiceImpl implements PositionRegistrationServ
 
     @Override
     public Position save(Position position) {
-        Long companyId = position.getCompany().getId();
+        String companyId = position.getCompany().getId();
         Company company = companyService.findById(companyId);
         position.setCompany(company);
 
         if (hasSuperior(position)) {
-            Long superiorId = position.getSuperior().getId();
+            String superiorId = position.getSuperior().getId();
             Position positionFound = findById(superiorId);
             position.setSuperior(positionFound);
         }
@@ -41,7 +41,7 @@ public class PositionRegistrationServiceImpl implements PositionRegistrationServ
     }
 
     @Override
-    public void delete(Long positionId) {
+    public void delete(String positionId) {
         try {
             positionRepository.deleteById(positionId);
             positionRepository.flush();
@@ -53,7 +53,7 @@ public class PositionRegistrationServiceImpl implements PositionRegistrationServ
     }
 
     @Override
-    public Position findById(Long positionId) {
+    public Position findById(String positionId) {
         return positionRepository.findById(positionId)
             .orElseThrow(() -> new EntityNotFoundException(Position.class, positionId));
     }

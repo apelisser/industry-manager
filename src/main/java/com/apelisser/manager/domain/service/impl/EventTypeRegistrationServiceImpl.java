@@ -27,14 +27,14 @@ public class EventTypeRegistrationServiceImpl implements EventTypeRegistrationSe
 
     @Override
     public EventType save(EventType eventType) {
-        Long companyId = eventType.getCompany().getId();
+        String companyId = eventType.getCompany().getId();
         Company company = companyService.findById(companyId);
         eventType.setCompany(company);
         return eventTypeRepository.save(eventType);
     }
 
     @Override
-    public void delete(Long eventTypeId) {
+    public void delete(String eventTypeId) {
         try {
             eventTypeRepository.deleteById(eventTypeId);
             eventTypeRepository.flush();
@@ -46,7 +46,7 @@ public class EventTypeRegistrationServiceImpl implements EventTypeRegistrationSe
     }
 
     @Override
-    public EventType findById(Long eventTypeId) {
+    public EventType findById(String eventTypeId) {
         return eventTypeRepository.findById(eventTypeId)
             .orElseThrow(() -> new EntityNotFoundException(EventType.class, eventTypeId));
     }

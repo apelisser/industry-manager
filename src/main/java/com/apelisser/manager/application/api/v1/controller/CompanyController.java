@@ -44,7 +44,7 @@ public class CompanyController {
     }
 
     @GetMapping("/{companyId}")
-    public CompanyModel findById(@PathVariable Long companyId) {
+    public CompanyModel findById(@PathVariable String companyId) {
         Company company = companyService.findById(companyId);
         return companyAssembler.toModel(company);
     }
@@ -58,7 +58,7 @@ public class CompanyController {
     }
 
     @PutMapping("/{companyId}")
-    public CompanyModel update(@PathVariable Long companyId, @RequestBody CompanyInput companyInput) {
+    public CompanyModel update(@PathVariable String companyId, @RequestBody CompanyInput companyInput) {
         Company company = companyService.findById(companyId);
         companyDisassembler.copyToDomainObject(companyInput, company);
         Company updatedCompany = companyService.save(company);
@@ -67,7 +67,7 @@ public class CompanyController {
 
     @DeleteMapping("/{companyId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long companyId) {
+    public void delete(@PathVariable String companyId) {
         companyService.delete(companyId);
     }
 

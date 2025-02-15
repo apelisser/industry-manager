@@ -8,9 +8,9 @@ public interface EquipmentRegistrationService {
 
     Equipment save(Equipment equipment);
 
-    void delete(Long equipmentId);
+    void delete(String equipmentId);
 
-    Equipment findById(Long equipmentId);
+    Equipment findById(String equipmentId);
 
     List<Equipment> findAll();
 

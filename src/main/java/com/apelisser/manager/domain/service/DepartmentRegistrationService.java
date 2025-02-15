@@ -8,9 +8,9 @@ public interface DepartmentRegistrationService {
 
     Department save(Department department);
 
-    void delete(Long departmentId);
+    void delete(String departmentId);
 
-    Department findById(Long departmentId);
+    Department findById(String departmentId);
 
     List<Department> findAll();
 

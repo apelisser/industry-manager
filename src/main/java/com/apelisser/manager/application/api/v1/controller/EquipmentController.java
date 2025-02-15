@@ -47,7 +47,7 @@ public class EquipmentController {
     }
 
     @GetMapping("/{equipmentId}")
-    public EquipmentModel findById(@PathVariable Long equipmentId) {
+    public EquipmentModel findById(@PathVariable String equipmentId) {
         Equipment equipment = equipmentService.findById(equipmentId);
         return equipmentAssembler.toModel(equipment);
     }
@@ -61,7 +61,7 @@ public class EquipmentController {
     }
 
     @PutMapping("/{equipmentId}")
-    public EquipmentModel update(@PathVariable Long equipmentId, @RequestBody EquipmentUpdateInput equipmentInput) {
+    public EquipmentModel update(@PathVariable String equipmentId, @RequestBody EquipmentUpdateInput equipmentInput) {
         Equipment equipment = equipmentService.findById(equipmentId);
         equipmentDisassembler.copyToDomainObject(equipmentInput, equipment);
         Equipment updatedEquipment = equipmentService.save(equipment);
@@ -70,7 +70,7 @@ public class EquipmentController {
 
     @DeleteMapping("/{equipmentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long equipmentId) {
+    public void delete(@PathVariable String equipmentId) {
         equipmentService.delete(equipmentId);
     }
 

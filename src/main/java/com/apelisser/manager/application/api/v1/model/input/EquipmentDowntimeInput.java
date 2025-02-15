@@ -14,9 +14,9 @@ import java.util.List;
 @EqualsAndHashCode
 public class EquipmentDowntimeInput {
 
-    private Long equipmentId;
-    private Long eventId;
-    private Long employeeId;
+    private String equipmentId;
+    private String eventId;
+    private String employeeId;
     private OffsetDateTime startTime;
     private OffsetDateTime endTime;
     private String observation;

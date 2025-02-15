@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class CountryModel {
 
-    private Long id;
+    private String id;
     private String name;
     private String abbrevName;
 

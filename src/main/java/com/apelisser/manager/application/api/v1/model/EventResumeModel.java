@@ -11,7 +11,7 @@ import lombok.ToString;
 @EqualsAndHashCode(of = { "id" })
 public class EventResumeModel {
 
-    private Long id;
+    private String id;
     private String name;
     private String abbreviation;
 

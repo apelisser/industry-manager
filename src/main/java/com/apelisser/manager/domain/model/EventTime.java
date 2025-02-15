@@ -1,7 +1,13 @@
 package com.apelisser.manager.domain.model;
 
 import com.apelisser.manager.domain.enums.EventType;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,11 +19,7 @@ import java.time.OffsetDateTime;
 @Setter
 @Entity
 @Table(name = "event_time")
-public class EventTime {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class EventTime extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)

@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 @EqualsAndHashCode(of = { "id" })
 public class EventTimeModel {
 
-    private Long id;
+    private String id;
     private EventResumeModel event;
     private EventType type;
     private OffsetDateTime startTime;

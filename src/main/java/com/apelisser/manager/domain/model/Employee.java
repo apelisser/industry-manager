@@ -2,9 +2,6 @@ package com.apelisser.manager.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -15,11 +12,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "employee")
-public class Employee {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Employee extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
@@ -42,8 +35,8 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id) {
-        this.id = id;
+    public Employee(String id) {
+        super.setId(id);
     }
 
 }

@@ -49,7 +49,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{departmentId}")
-    public DepartmentModel findById(@PathVariable Long departmentId) {
+    public DepartmentModel findById(@PathVariable String departmentId) {
         Department department = departmentService.findById(departmentId);
         return departmentAssembler.toModel(department);
     }
@@ -63,7 +63,7 @@ public class DepartmentController {
     }
 
     @PutMapping("/{departmentId}")
-    public DepartmentModel update(@PathVariable Long departmentId, @RequestBody DepartmentInput departmentInput) {
+    public DepartmentModel update(@PathVariable String departmentId, @RequestBody DepartmentInput departmentInput) {
         Department department = departmentService.findById(departmentId);
         departmentDisassembler.copyToDomainObject(departmentInput, department);
         Department updatedDepartment = departmentService.save(department);
@@ -72,7 +72,7 @@ public class DepartmentController {
 
     @DeleteMapping("/{departmentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long departmentId) {
+    public void delete(@PathVariable String departmentId) {
         departmentService.delete(departmentId);
     }
 

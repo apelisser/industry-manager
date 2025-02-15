@@ -42,13 +42,13 @@ public class EventController {
     }
 
     @GetMapping("/{eventId}/children")
-    public List<EventResumeModel> findChildren(@PathVariable Long eventId) {
+    public List<EventResumeModel> findChildren(@PathVariable String eventId) {
         List<Event> children = eventService.findAllChildren(eventId);
         return eventResumeAssembler.toCollectionModel(children);
     }
 
     @GetMapping("/{eventId}")
-    public EventModel findById(@PathVariable Long eventId) {
+    public EventModel findById(@PathVariable String eventId) {
         Event event = eventService.findById(eventId);
         return eventAssembler.toModel(event);
     }
@@ -63,7 +63,7 @@ public class EventController {
 
     @PostMapping(path = "/{eventId}/children", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public EventModel addChildren(@PathVariable Long eventId, @RequestBody EventChildrenInput eventInput) {
+    public EventModel addChildren(@PathVariable String eventId, @RequestBody EventChildrenInput eventInput) {
         Event domainEvent = eventDisassembler.toDomainObject(eventInput);
         Event event = eventService.findById(eventId);
         domainEvent.setParent(event);
@@ -73,7 +73,7 @@ public class EventController {
     }
 
     @PutMapping("/{eventId}")
-    public EventModel update(@PathVariable Long eventId, @RequestBody EventUpdateInput eventInput) {
+    public EventModel update(@PathVariable String eventId, @RequestBody EventUpdateInput eventInput) {
         Event event = eventService.findById(eventId);
         eventDisassembler.copyToDomainObject(eventInput, event);
         Event updatedEvent = eventService.save(event);
@@ -82,19 +82,19 @@ public class EventController {
 
     @DeleteMapping("/{eventId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long eventId) {
+    public void delete(@PathVariable String eventId) {
         eventService.delete(eventId);
     }
 
     @PatchMapping("/{eventId}/inactivation")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void inactivate(@PathVariable Long eventId) {
+    public void inactivate(@PathVariable String eventId) {
         eventService.inactivate(eventId);
     }
 
     @PatchMapping("/{eventId}/activation")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void activate(@PathVariable Long eventId) {
+    public void activate(@PathVariable String eventId) {
         eventService.activate(eventId);
     }
 

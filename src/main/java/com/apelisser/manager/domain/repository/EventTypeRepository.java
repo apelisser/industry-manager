@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface EventTypeRepository extends CustomJpaRepository <EventType, Long> {
+public interface EventTypeRepository extends CustomJpaRepository <EventType, String> {
 
     @Override
     @Query("""

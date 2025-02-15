@@ -11,6 +11,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class CountryIdInput {
 
-    private Long id;
+    private String id;
 
 }

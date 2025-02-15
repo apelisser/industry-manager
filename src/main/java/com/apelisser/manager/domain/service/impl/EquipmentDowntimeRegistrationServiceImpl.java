@@ -55,7 +55,7 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
     }
 
     @Override
-    public void delete(Long equipmentDowntimeId) {
+    public void delete(String equipmentDowntimeId) {
         try {
             downtimeRepository.deleteById(equipmentDowntimeId);
             downtimeRepository.flush();
@@ -67,7 +67,7 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
     }
 
     @Override
-    public void deleteRelatedEventTime(Long equipmentDowntimeId, Long eventTimeId) {
+    public void deleteRelatedEventTime(String equipmentDowntimeId, String eventTimeId) {
         Assert.notNull(equipmentDowntimeId, "The equipment downtime id must not be null.");
         Assert.notNull(eventTimeId, "The event time id must not be null.");
 
@@ -78,7 +78,7 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
             .findFirst()
             .orElseThrow(() -> {
                 String message = String.format(
-                    "The event time with id %d is not related to the equipment downtime with id %d.",
+                    "The event time with id %s is not related to the equipment downtime with id %s.",
                     eventTimeId,
                     equipmentDowntimeId
                 );
@@ -90,13 +90,13 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
     }
 
     @Override
-    public EquipmentDowntime addRelatedEventsTime(Long equipmentDowntimeId, List<EventTime> eventsTime) {
+    public EquipmentDowntime addRelatedEventsTime(String equipmentDowntimeId, List<EventTime> eventsTime) {
         // Validate the list of EventTime objects against each other
         localValidationService.validateEventsTime(eventsTime);
 
         // Set the event property of each EventTime to the corresponding event
         eventsTime.forEach(eventTime -> {
-            Long eventId = eventTime.getEvent().getId();
+            String eventId = eventTime.getEvent().getId();
             Event event = eventRegistrationService.findById(eventId);
             eventTime.setEvent(event);
         });
@@ -113,7 +113,7 @@ public class EquipmentDowntimeRegistrationServiceImpl implements EquipmentDownti
     }
 
     @Override
-    public EquipmentDowntime findById(Long equipmentDowntimeId) {
+    public EquipmentDowntime findById(String equipmentDowntimeId) {
         return downtimeRepository.findById(equipmentDowntimeId)
             .orElseThrow(() -> new EntityNotFoundException(EquipmentDowntime.class, equipmentDowntimeId));
     }

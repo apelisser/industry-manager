@@ -18,10 +18,10 @@ import static com.apelisser.manager.domain.enums.EventType.INTERNAL;
 public class LocalDowntimeValidationServiceImpl implements LocalDowntimeValidationService {
 
     private static final String OUT_OF_RANGE_EVENT_MESSAGE_TEMPLATE = "Event out of range: " +
-        "[Event ID: %d, Type: %s, Start: %s, End: %s] exceeds primary threshold [Start: %s, End: %s].";
+        "[Event ID: %s, Type: %s, Start: %s, End: %s] exceeds primary threshold [Start: %s, End: %s].";
 
     private static final String OVERLAP_EVENT_MESSAGE_TEMPLATE = "Events overlap detected: " +
-        "[Event ID: %d, Type: %s, Start: %s, End: %s] overlaps with [Event ID: %d, Type: %s, Start: %s, End: %s].";
+        "[Event ID: %s, Type: %s, Start: %s, End: %s] overlaps with [Event ID: %s, Type: %s, Start: %s, End: %s].";
 
     /**
      * Validates an EquipmentDowntime entity.

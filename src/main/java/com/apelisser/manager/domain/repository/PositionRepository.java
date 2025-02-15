@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface PositionRepository extends CustomJpaRepository<Position, Long> {
+public interface PositionRepository extends CustomJpaRepository<Position, String> {
 
     @Query("""
         from Position p
