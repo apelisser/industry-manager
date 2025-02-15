@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 public class CompanyModel {
 
-    private Long id;
+    private String id;
     private String name;
     private String alias;
     private RecordStatus status;

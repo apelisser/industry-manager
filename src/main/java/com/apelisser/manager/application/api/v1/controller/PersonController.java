@@ -44,7 +44,7 @@ public class PersonController {
     }
 
     @GetMapping("/{personId}")
-    public PersonModel findById(@PathVariable Long personId) {
+    public PersonModel findById(@PathVariable String personId) {
         Person person = personService.findById(personId);
         return personAssembler.toModel(person);
     }
@@ -58,7 +58,7 @@ public class PersonController {
     }
 
     @PutMapping("/{personId}")
-    public PersonModel update(@PathVariable Long personId, @RequestBody PersonInput personInput) {
+    public PersonModel update(@PathVariable String personId, @RequestBody PersonInput personInput) {
         Person person = personService.findById(personId);
         personDisassembler.copyToDomainObject(personInput, person);
         Person updatedPerson = personService.save(person);
@@ -67,7 +67,7 @@ public class PersonController {
 
     @DeleteMapping("/{personId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long personId) {
+    public void delete(@PathVariable String personId) {
         personService.delete(personId);
     }
 

@@ -45,7 +45,7 @@ public class StateController {
     }
 
     @GetMapping("/{stateId}")
-    public StateModel findById(@PathVariable Long stateId) {
+    public StateModel findById(@PathVariable String stateId) {
         State state = stateService.findById(stateId);
         return stateAssembler.toModel(state);
     }
@@ -59,7 +59,7 @@ public class StateController {
     }
 
     @PutMapping("/{stateId}")
-    public StateModel update(@PathVariable Long stateId, @RequestBody StateInput stateInput) {
+    public StateModel update(@PathVariable String stateId, @RequestBody StateInput stateInput) {
         State state = stateService.findById(stateId);
         stateDisassembler.copyToDomainObject(stateInput, state);
         State updatedState = stateService.save(state);
@@ -68,7 +68,7 @@ public class StateController {
 
     @DeleteMapping("/{stateId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long stateId) {
+    public void delete(@PathVariable String stateId) {
         stateService.delete(stateId);
     }
 

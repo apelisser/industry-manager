@@ -1,7 +1,13 @@
 package com.apelisser.manager.domain.model;
 
 import com.apelisser.manager.domain.enums.RecordStatus;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,11 +15,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "position")
-public class Position {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Position extends BaseEntity {
 
     @Column(nullable = false)
     private String name;

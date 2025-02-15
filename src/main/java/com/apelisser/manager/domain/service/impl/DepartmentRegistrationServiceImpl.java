@@ -27,14 +27,14 @@ public class DepartmentRegistrationServiceImpl implements DepartmentRegistration
 
     @Override
     public Department save(Department department) {
-        Long companyId = department.getCompany().getId();
+        String companyId = department.getCompany().getId();
         Company company = companyService.findById(companyId);
         department.setCompany(company);
         return departmentRepository.save(department);
     }
 
     @Override
-    public void delete(Long departmentId) {
+    public void delete(String departmentId) {
         try {
             departmentRepository.deleteById(departmentId);
             departmentRepository.flush();
@@ -46,7 +46,7 @@ public class DepartmentRegistrationServiceImpl implements DepartmentRegistration
     }
 
     @Override
-    public Department findById(Long departmentId) {
+    public Department findById(String departmentId) {
         return departmentRepository.findById(departmentId)
             .orElseThrow(() -> new EntityNotFoundException(Department.class, departmentId));
     }

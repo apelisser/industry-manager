@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class CityModel {
 
-    private Long id;
+    private String id;
     private String name;
     private StateModel state;
 

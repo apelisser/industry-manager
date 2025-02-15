@@ -29,14 +29,14 @@ public class EquipmentRegistrationServiceImpl implements EquipmentRegistrationSe
 
     @Override
     public Equipment save(Equipment equipment) {
-        Long departmentId = equipment.getDepartment().getId();
+        String departmentId = equipment.getDepartment().getId();
         Department department = departmentService.findById(departmentId);
         equipment.setDepartment(department);
         return equipmentRepository.save(equipment);
     }
 
     @Override
-    public void delete(Long equipmentId) {
+    public void delete(String equipmentId) {
         try {
             equipmentRepository.deleteById(equipmentId);
             equipmentRepository.flush();
@@ -48,7 +48,7 @@ public class EquipmentRegistrationServiceImpl implements EquipmentRegistrationSe
     }
 
     @Override
-    public Equipment findById(Long equipmentId) {
+    public Equipment findById(String equipmentId) {
         return equipmentRepository.findById(equipmentId)
             .orElseThrow(() -> new EntityNotFoundException(Equipment.class, equipmentId));
     }

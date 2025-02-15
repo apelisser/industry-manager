@@ -26,14 +26,14 @@ public class CompanyRegistrationServiceImpl implements CompanyRegistrationServic
 
     @Override
     public Company save(Company company) {
-        Long personId = company.getPerson().getId();
+        String personId = company.getPerson().getId();
         Person person = personService.findById(personId);
         company.setPerson(person);
         return companyRepository.save(company);
     }
 
     @Override
-    public void delete(Long companyId) {
+    public void delete(String companyId) {
         try {
             companyRepository.deleteById(companyId);
             companyRepository.flush();
@@ -45,7 +45,7 @@ public class CompanyRegistrationServiceImpl implements CompanyRegistrationServic
     }
 
     @Override
-    public Company findById(Long companyId) {
+    public Company findById(String companyId) {
         return companyRepository.findById(companyId)
             .orElseThrow(() -> new EntityNotFoundException(Company.class, companyId));
     }

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Optional;
 
-public interface EquipmentRepository extends CustomJpaRepository<Equipment, Long> {
+public interface EquipmentRepository extends CustomJpaRepository<Equipment, String> {
 
     @Override
     @Query("""
@@ -27,5 +27,5 @@ public interface EquipmentRepository extends CustomJpaRepository<Equipment, Long
         join fetch e.pieces
         where e.id = :id
         """)
-    Optional<Equipment> findById(Long id);
+    Optional<Equipment> findById(String id);
 }

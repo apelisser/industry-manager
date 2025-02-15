@@ -49,7 +49,7 @@ public class EventTypeController {
     }
 
     @GetMapping("/{eventTypeId}")
-    public EventTypeModel findById(@PathVariable Long eventTypeId) {
+    public EventTypeModel findById(@PathVariable String eventTypeId) {
         EventType eventType = eventTypeService.findById(eventTypeId);
         return eventTypeAssembler.toModel(eventType);
     }
@@ -63,7 +63,7 @@ public class EventTypeController {
     }
 
     @PutMapping("/{eventTypeId}")
-    public EventTypeModel update(@PathVariable Long eventTypeId, @RequestBody EventTypeUpdateInput eventTypeInput) {
+    public EventTypeModel update(@PathVariable String eventTypeId, @RequestBody EventTypeUpdateInput eventTypeInput) {
         EventType eventType = eventTypeService.findById(eventTypeId);
         eventTypeDisassembler.copyToDomainObject(eventTypeInput, eventType);
         EventType updatedEventType = eventTypeService.save(eventType);
@@ -72,7 +72,7 @@ public class EventTypeController {
 
     @DeleteMapping("/{eventTypeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long eventTypeId) {
+    public void delete(@PathVariable String eventTypeId) {
         eventTypeService.delete(eventTypeId);
     }
 

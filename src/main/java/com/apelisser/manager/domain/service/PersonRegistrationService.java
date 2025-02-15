@@ -8,9 +8,9 @@ public interface PersonRegistrationService {
 
     Person save(Person person);
 
-    void delete(Long personId);
+    void delete(String personId);
 
-    Person findById(Long personId);
+    Person findById(String personId);
 
     List<Person> findAll();
 

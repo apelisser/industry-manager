@@ -44,7 +44,7 @@ public class CountryController {
     }
 
     @GetMapping("/{countryId}")
-    public CountryModel findById(@PathVariable Long countryId) {
+    public CountryModel findById(@PathVariable String countryId) {
         Country country = countryService.findById(countryId);
         return countryAssembler.toModel(country);
     }
@@ -58,7 +58,7 @@ public class CountryController {
     }
 
     @PutMapping("/{countryId}")
-    public CountryModel update(@PathVariable Long countryId, @RequestBody CountryInput countryInput) {
+    public CountryModel update(@PathVariable String countryId, @RequestBody CountryInput countryInput) {
         Country country = countryService.findById(countryId);
         countryDisassembler.copyToDomainObject(countryInput, country);
         Country updatedCountry = countryService.save(country);
@@ -67,7 +67,7 @@ public class CountryController {
 
     @DeleteMapping("/{countryId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long countryId) {
+    public void delete(@PathVariable String countryId) {
         countryService.delete(countryId);
     }
 

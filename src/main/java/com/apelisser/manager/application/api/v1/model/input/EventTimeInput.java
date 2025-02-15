@@ -14,7 +14,7 @@ import java.time.OffsetDateTime;
 @EqualsAndHashCode
 public class EventTimeInput {
 
-    private Long eventId;
+    private String eventId;
     private EventType type;
     private OffsetDateTime startTime;
     private OffsetDateTime endTime;

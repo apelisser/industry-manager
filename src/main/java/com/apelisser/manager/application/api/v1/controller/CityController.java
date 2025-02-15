@@ -44,7 +44,7 @@ public class CityController {
     }
 
     @GetMapping("/{cityId}")
-    public CityModel findById(@PathVariable Long cityId) {
+    public CityModel findById(@PathVariable String cityId) {
         City city = cityService.findById(cityId);
         return cityAssembler.toModel(city);
     }
@@ -58,7 +58,7 @@ public class CityController {
     }
 
     @PutMapping("/{cityId}")
-    public CityModel update(@PathVariable Long cityId, @RequestBody CityInput cityInput) {
+    public CityModel update(@PathVariable String cityId, @RequestBody CityInput cityInput) {
         City city = cityService.findById(cityId);
         cityDisassembler.copyToDomainObject(cityInput, city);
         City updatedCity = cityService.save(city);
@@ -67,7 +67,7 @@ public class CityController {
 
     @DeleteMapping("/{cityId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long cityId) {
+    public void delete(@PathVariable String cityId) {
         cityService.delete(cityId);
     }
 

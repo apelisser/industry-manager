@@ -48,7 +48,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{employeeId}")
-    public EmployeeModel findById(@PathVariable Long employeeId) {
+    public EmployeeModel findById(@PathVariable String employeeId) {
         Employee employee = employeeService.findById(employeeId);
         return employeeAssembler.toModel(employee);
     }
@@ -62,7 +62,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{employeeId}")
-    public EmployeeModel update(@PathVariable Long employeeId, @RequestBody EmployeeInput employeeInput) {
+    public EmployeeModel update(@PathVariable String employeeId, @RequestBody EmployeeInput employeeInput) {
         Employee employee = employeeService.findById(employeeId);
         employeeDisassembler.copyToDomainObject(employeeInput, employee);
         Employee updatedEmployee = employeeService.save(employee);
@@ -71,7 +71,7 @@ public class EmployeeController {
 
     @DeleteMapping("/{employeeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long employeeId) {
+    public void delete(@PathVariable String employeeId) {
         employeeService.delete(employeeId);
     }
 

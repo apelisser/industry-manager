@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 public class PersonModel {
 
-    private Long id;
+    private String id;
     private PersonType type;
     private String code;
 

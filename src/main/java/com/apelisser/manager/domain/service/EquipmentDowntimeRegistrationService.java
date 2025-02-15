@@ -10,13 +10,13 @@ public interface EquipmentDowntimeRegistrationService {
 
     EquipmentDowntime save(EquipmentDowntime equipmentDowntime);
 
-    void delete(Long equipmentDowntimeId);
+    void delete(String equipmentDowntimeId);
 
-    void deleteRelatedEventTime(Long equipmentDowntimeId, Long eventTimeId);
+    void deleteRelatedEventTime(String equipmentDowntimeId, String eventTimeId);
 
-    EquipmentDowntime addRelatedEventsTime(Long equipmentDowntimeId, List<EventTime> eventsTime);
+    EquipmentDowntime addRelatedEventsTime(String equipmentDowntimeId, List<EventTime> eventsTime);
 
-    EquipmentDowntime findById(Long equipmentDowntimeId);
+    EquipmentDowntime findById(String equipmentDowntimeId);
 
     Optional<EquipmentDowntime> findFirstOverlap(EquipmentDowntime equipmentDowntime);
 

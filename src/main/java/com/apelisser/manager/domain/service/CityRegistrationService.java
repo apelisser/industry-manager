@@ -8,9 +8,9 @@ public interface CityRegistrationService {
 
     City save(City city);
 
-    void delete(Long cityId);
+    void delete(String cityId);
 
-    City findById(Long cityId);
+    City findById(String cityId);
 
     List<City> findAll();
 

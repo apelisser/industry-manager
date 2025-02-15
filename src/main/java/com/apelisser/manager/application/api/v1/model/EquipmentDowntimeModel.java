@@ -15,7 +15,7 @@ import java.util.List;
 @EqualsAndHashCode(of = { "id" })
 public class EquipmentDowntimeModel {
 
-    private Long id;
+    private String id;
     private EquipmentResumeModel equipment;
     private EventResumeModel event;
     private EmployeeResumeModel employee;

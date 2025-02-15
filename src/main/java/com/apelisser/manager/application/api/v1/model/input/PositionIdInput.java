@@ -11,6 +11,6 @@ import lombok.ToString;
 @ToString
 public class PositionIdInput {
 
-    private Long id;
+    private String id;
 
 }

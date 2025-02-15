@@ -13,7 +13,7 @@ import java.util.Optional;
 public class DatabaseDowntimeValidationServiceImpl implements DatabaseDowntimeValidationService {
 
     private static final String OVERLAP_EVENT_MESSAGE_TEMPLATE = "Overlap detected in registered event: " +
-        "[Event ID: %d, Start: %s, End: %s] overlaps with [Event ID: %d, Start: %s, End: %s].";
+        "[Event ID: %s, Start: %s, End: %s] overlaps with [Event ID: %s, Start: %s, End: %s].";
 
     private final EquipmentDowntimeRegistrationService downtimeService;
 

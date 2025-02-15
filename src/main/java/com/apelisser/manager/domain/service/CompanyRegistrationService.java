@@ -8,9 +8,9 @@ public interface CompanyRegistrationService {
 
     Company save(Company company);
 
-    void delete(Long companyId);
+    void delete(String companyId);
 
-    Company findById(Long companyId);
+    Company findById(String companyId);
 
     List<Company> findAll();
 

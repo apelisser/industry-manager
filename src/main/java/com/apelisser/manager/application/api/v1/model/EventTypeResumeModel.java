@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class EventTypeResumeModel {
 
-    private Long id;
+    private String id;
     private String name;
     private String abbreviation;
 

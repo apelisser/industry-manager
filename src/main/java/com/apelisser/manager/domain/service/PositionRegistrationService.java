@@ -8,9 +8,9 @@ public interface PositionRegistrationService {
 
     Position save(Position position);
 
-    void delete(Long positionId);
+    void delete(String positionId);
 
-    Position findById(Long positionId);
+    Position findById(String positionId);
 
     List<Position> findAll();
 

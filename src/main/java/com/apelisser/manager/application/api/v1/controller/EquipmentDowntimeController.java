@@ -57,7 +57,7 @@ public class EquipmentDowntimeController {
 
     @PostMapping(path = "/{equipmentDowntimeId}/related-events", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public EquipmentDowntimeModel addRelatedEvent(@PathVariable Long equipmentDowntimeId,
+    public EquipmentDowntimeModel addRelatedEvent(@PathVariable String equipmentDowntimeId,
             @RequestBody List<EventTimeInput> eventsTimeInput) {
         List<EventTime> eventsTime = eventTimeDisassembler.toCollectionDomain(eventsTimeInput);
         EquipmentDowntime updatedDowntime = downtimeService.addRelatedEventsTime(equipmentDowntimeId, eventsTime);
@@ -66,14 +66,14 @@ public class EquipmentDowntimeController {
 
     @DeleteMapping(path = "/{equipmentDowntimeId}/related-events/{eventTimeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRelatedEvent(@PathVariable Long equipmentDowntimeId,
-            @PathVariable Long eventTimeId) {
+    public void deleteRelatedEvent(@PathVariable String equipmentDowntimeId,
+            @PathVariable String eventTimeId) {
         downtimeService.deleteRelatedEventTime(equipmentDowntimeId, eventTimeId);
     }
 
     @DeleteMapping(path = "/{equipmentDowntimeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long equipmentDowntimeId) {
+    public void delete(@PathVariable String equipmentDowntimeId) {
         downtimeService.delete(equipmentDowntimeId);
     }
 

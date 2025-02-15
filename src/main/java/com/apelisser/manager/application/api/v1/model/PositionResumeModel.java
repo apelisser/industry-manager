@@ -15,7 +15,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @JsonInclude(NON_NULL)
 public class PositionResumeModel {
 
-    private Long id;
+    private String id;
     private String name;
     private String description;
 

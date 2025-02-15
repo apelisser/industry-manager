@@ -8,9 +8,9 @@ public interface StateRegistrationService {
 
     State save(State state);
 
-    void delete(Long stateId);
+    void delete(String stateId);
 
-    State findById(Long stateId);
+    State findById(String stateId);
 
     List<State> findAll();
 

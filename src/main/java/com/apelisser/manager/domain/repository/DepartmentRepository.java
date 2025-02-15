@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface DepartmentRepository extends CustomJpaRepository<Department, Long> {
+public interface DepartmentRepository extends CustomJpaRepository<Department, String> {
 
     @Override
     @Query("from Department d join fetch d.company c join fetch c.person")

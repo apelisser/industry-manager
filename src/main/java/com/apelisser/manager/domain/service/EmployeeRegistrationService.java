@@ -8,9 +8,9 @@ public interface EmployeeRegistrationService {
 
     Employee save(Employee employee);
 
-    void delete(Long employeeId);
+    void delete(String employeeId);
 
-    Employee findById(Long employeeId);
+    Employee findById(String employeeId);
 
     List<Employee> findAll();
 

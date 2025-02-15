@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface EventRepository extends CustomJpaRepository <Event, Long> {
+public interface EventRepository extends CustomJpaRepository <Event, String> {
 
     @Query("""
         from Event e
@@ -25,6 +25,6 @@ public interface EventRepository extends CustomJpaRepository <Event, Long> {
             and e.status = 'ACTIVE'
             and e.parent.id = :parentEventId
         """)
-    List<Event> findAllChildren(Long parentEventId);
+    List<Event> findAllChildren(String parentEventId);
 
 }

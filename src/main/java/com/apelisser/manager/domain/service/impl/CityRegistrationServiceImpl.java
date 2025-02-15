@@ -26,14 +26,14 @@ public class CityRegistrationServiceImpl implements CityRegistrationService {
 
     @Override
     public City save(City city) {
-        Long stateId = city.getState().getId();
+        String stateId = city.getState().getId();
         State state = stateService.findById(stateId);
         city.setState(state);
         return cityRepository.save(city);
     }
 
     @Override
-    public void delete(Long cityId) {
+    public void delete(String cityId) {
         try {
             cityRepository.deleteById(cityId);
             cityRepository.flush();
@@ -45,7 +45,7 @@ public class CityRegistrationServiceImpl implements CityRegistrationService {
     }
 
     @Override
-    public City findById(Long cityId) {
+    public City findById(String cityId) {
         return cityRepository.findById(cityId)
             .orElseThrow(() -> new EntityNotFoundException(City.class, cityId));
     }

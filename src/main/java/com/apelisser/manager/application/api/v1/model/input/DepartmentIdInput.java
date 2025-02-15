@@ -11,5 +11,5 @@ import lombok.ToString;
 @ToString
 public class DepartmentIdInput {
 
-    private Long id;
+    private String id;
 }

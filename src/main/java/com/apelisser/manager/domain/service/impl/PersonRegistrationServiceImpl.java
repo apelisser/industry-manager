@@ -30,7 +30,7 @@ public class PersonRegistrationServiceImpl implements PersonRegistrationService 
     }
 
     @Override
-    public void delete(Long personId) {
+    public void delete(String personId) {
         try {
             personRepository.deleteById(personId);
             personRepository.flush();
@@ -42,7 +42,7 @@ public class PersonRegistrationServiceImpl implements PersonRegistrationService 
     }
 
     @Override
-    public Person findById(Long personId) {
+    public Person findById(String personId) {
         return personRepository.findById(personId)
             .orElseThrow(() -> new EntityNotFoundException(Person.class, personId));
     }

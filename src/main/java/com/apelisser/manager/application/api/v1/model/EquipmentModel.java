@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(of = { "id" })
 public class EquipmentModel {
 
-    private Long id;
+    private String id;
     private String name;
     private String brand;
     private String model;
@@ -27,7 +27,7 @@ public class EquipmentModel {
     @ToString
     @EqualsAndHashCode(of = { "id" })
     public static class Piece {
-        private Long id;
+        private String id;
         private String name;
         private double capacity;
         private String description;

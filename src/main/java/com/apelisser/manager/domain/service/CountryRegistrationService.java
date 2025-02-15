@@ -8,9 +8,9 @@ public interface CountryRegistrationService {
 
     Country save(Country country);
 
-    void delete(Long countryId);
+    void delete(String countryId);
 
-    Country findById(Long countryId);
+    Country findById(String countryId);
 
     List<Country> findAll();
 
