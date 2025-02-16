@@ -60,6 +60,8 @@ public final class MessageConstants {
     public static final String EX_EVENT_OUT_OF_RANGE_DETAIL = "exception.event-out-of-range.detail";
     public static final String EX_PARENT_EVENT_UPDATE_NOT_ALLOWED_MESSAGE = "exception.parent-event-update-not-allowed.message";
     public static final String EX_PARENT_EVENT_UPDATE_NOT_ALLOWED_DETAIL = "exception.parent-event-update-not-allowed.detail";
+    public static final String EX_CONSTRAINT_VIOLATION_MESSAGE = "exception.constraint-violation.message";
+    public static final String EX_CONSTRAINT_VIOLATION_DETAIL = "exception.constraint-violation.detail";
 
     private MessageConstants() {
         throw new IllegalStateException("Utility class");

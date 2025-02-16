@@ -11,6 +11,7 @@ import com.apelisser.manager.domain.exception.EventOutOfRangeException;
 import com.apelisser.manager.domain.exception.EventTimeOverlapException;
 import com.apelisser.manager.domain.exception.ParentEventUpdateNotAllowedException;
 import com.apelisser.manager.domain.exception.PersonInvalidException;
+import com.apelisser.manager.domain.exception.ConstraintViolationException;
 import com.apelisser.manager.domain.model.EquipmentDowntime;
 import com.apelisser.manager.domain.model.EventTime;
 import org.slf4j.Logger;
@@ -154,6 +155,20 @@ public class ApiExceptionHandler extends ExceptionHandlingHelper {
         ProblemType problemType = ProblemType.INVALID_DATA;
         String userMessage = getMessage(EX_PERSON_INVALID_MESSAGE, e.getType());
         String detailMessage = getMessage(EX_PERSON_INVALID_DETAIL, e.getValue(), e.getType());
+
+        Problem problem = createProblemBuilder(status, problemType, detailMessage)
+            .userMessage(userMessage)
+            .build();
+
+        return problem.toProblemDetail();
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    private ProblemDetail handleConstraintViolationException(ConstraintViolationException e) {
+        HttpStatusCode status = HttpStatus.CONFLICT;
+        ProblemType problemType = ProblemType.POLICY_VIOLATION;
+        String userMessage = getMessage(EX_CONSTRAINT_VIOLATION_MESSAGE);
+        String detailMessage = getMessage(EX_CONSTRAINT_VIOLATION_DETAIL);
 
         Problem problem = createProblemBuilder(status, problemType, detailMessage)
             .userMessage(userMessage)
