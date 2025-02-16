@@ -2,6 +2,7 @@ package com.apelisser.manager.domain.service.impl;
 
 import com.apelisser.manager.domain.exception.EntityInUseException;
 import com.apelisser.manager.domain.exception.EntityNotFoundException;
+import com.apelisser.manager.domain.exception.ConstraintViolationException;
 import com.apelisser.manager.domain.model.Country;
 import com.apelisser.manager.domain.repository.CountryRepository;
 import com.apelisser.manager.domain.service.CountryRegistrationService;
@@ -22,7 +23,11 @@ public class CountryRegistrationServiceImpl implements CountryRegistrationServic
 
     @Override
     public Country save(Country country) {
-        return countryRepository.save(country);
+        try {
+            return countryRepository.save(country);
+        } catch (DataIntegrityViolationException e) {
+            throw new ConstraintViolationException(e);
+        }
     }
 
     @Override
