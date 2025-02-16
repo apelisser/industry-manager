@@ -12,7 +12,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "state",
+@Table(
+    name = "state",
     uniqueConstraints = {
         @UniqueConstraint(name = "uk_state_name_country", columnNames = {"name", "country_id"}),
         @UniqueConstraint(name = "uk_state_abbrev_country", columnNames = {"abbrev_name", "country_id"})
