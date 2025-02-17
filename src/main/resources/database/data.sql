@@ -18,17 +18,11 @@ values ('01JM8JS1AQNGQW9HCYSKY8V831', 'Cruzeiro do Sul', '01JM8JG7J7HVARCXCYA13Y
        ('01JM8JTBX2FA6YJSCSBHG7892C', 'Presidente Prudente', '01JM8JGJB9AE3517NCEN7GEGCM'),
        ('01JM8JTTFEXHW1AJRCHMYGRRYR', 'São Paulo', '01JM8JGJB9AE3517NCEN7GEGCM');
 
-insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (1, 'Presidente', 'Presidente geral', 'ACTIVE', 1, null);
-insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (2, 'Diretor', 'Diretor geral', 'ACTIVE', 1, 1);
-insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (3, 'Gerente Administrativo', 'Gerente Adm', 'ACTIVE', 1, 2);
-insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (4, 'Gerente Industrial', 'Gerente Ind', 'ACTIVE', 1, 2);
-insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (5, 'Gerente Qualidade', 'Gerente Qua', 'ACTIVE', 1, 2);
-insert into POSITION (ID, NAME, DESCRIPTION, STATUS, COMPANY_ID, SUPERIOR_ID) values (6, 'Supervisor Laboratório', 'Supervisor lab', 'ACTIVE', 1, 5);
 
-insert into EMPLOYEE (ID, NAME, EMAIL, USERNAME, PASSWORD, BADGE, POSITION_ID) values (1, 'User 01', 'user01@email.com', 'user01', '@111', '254', 1);
-insert into EMPLOYEE (ID, NAME, EMAIL, USERNAME, PASSWORD, BADGE, POSITION_ID) values (2, 'User 02', 'user01@email.com', 'user02', '@222', '255', 2);
-insert into EMPLOYEE (ID, NAME, EMAIL, USERNAME, PASSWORD, BADGE, POSITION_ID) values (3, 'User 03', 'user01@email.com', 'user03', '@333', '256', 3);
-insert into EMPLOYEE (ID, NAME, EMAIL, USERNAME, PASSWORD, BADGE, POSITION_ID) values (4, 'User 04', 'user01@email.com', 'user04', '@444', '257', 6);
+insert into ORGANIZATION (ID, NAME, STATUS, DESCRIPTION)
+values ('01JM8SMPC0PBS96JG5S3VEQSHS', 'Organization 01', 'ACTIVE', 'Organization 01 description'),
+       ('01JM8T0QJHSKEP32YKCXFQ0P4K', 'Organization 02', 'ACTIVE', 'Organization 02 description'),
+       ('01JM8T0VRRPR09AHV6J2F1PSMJ', 'Organization 03', 'ACTIVE', 'Organization 03 description');
 
 
 --
